@@ -29,6 +29,7 @@ public class VueClicItem extends JPopupMenu implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		Jeu j = (Jeu) o;
+		
 	}
 	
 }
