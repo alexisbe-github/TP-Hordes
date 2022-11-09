@@ -32,7 +32,7 @@ public class VueMenu extends JPanel implements Observer {
 		this.enVille = true;
 		JButton ouvrirVille = new JButton("Ouvrir portes de la ville");
 		JButton gazette = new JButton("Lire le journal");
-		JButton boire = new JButton("Boire de l'eau");
+		JButton remplirGourde = new JButton("Remplir une gourde");
 		JButton manger = new JButton("Manger");
 		JButton construire = new JButton("Construire une défense");
 		JButton viderSac = new JButton("Vider le sac");
@@ -40,7 +40,7 @@ public class VueMenu extends JPanel implements Observer {
 
 		this.boutonsVille.add(ouvrirVille);
 		this.boutonsVille.add(gazette);
-		this.boutonsVille.add(boire);
+		this.boutonsVille.add(remplirGourde);
 		this.boutonsVille.add(manger);
 		this.boutonsVille.add(construire);
 		this.boutonsVille.add(viderSac);
@@ -61,7 +61,7 @@ public class VueMenu extends JPanel implements Observer {
 			b.addActionListener(cb);
 		}
 
-		this.boutonsDehors.add(boire);
+		this.boutonsDehors.add(remplirGourde);
 		this.boutonsDehors.add(passerTour);
 
 		for (JButton b : this.boutonsDehors) {
@@ -102,7 +102,7 @@ public class VueMenu extends JPanel implements Observer {
 						b.setEnabled(true);
 					}
 				}
-				if (b.getText().equals("Boire de l'eau")) {
+				if (b.getText().equals("Remplir une gourde")) {
 					if (this.joueur.getABu() || (!this.joueur.aUneGourde() && !this.joueur.estEnVille())) {
 						b.setEnabled(false);
 					} else {
@@ -115,8 +115,8 @@ public class VueMenu extends JPanel implements Observer {
 			this.setLayout(new GridLayout(this.boutonsDehors.size(), 1));
 			for (JButton b : this.boutonsDehors) {
 				switch (b.getText()) {
-				case "Boire de l'eau":
-					if (this.joueur.getABu() || (!this.joueur.aUneGourde() && !this.joueur.estEnVille())) {
+				case "Remplir une gourde":
+					if (this.joueur.getABu() || !this.joueur.estEnVille()) {
 						b.setEnabled(false);
 					} else {
 						b.setEnabled(true);

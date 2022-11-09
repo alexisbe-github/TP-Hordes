@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import main.java.model.Jeu;
 import main.java.model.Joueur;
+import main.java.model.objet.Gourde;
 
 public class ControleurBoutons implements ActionListener {
 
@@ -22,8 +23,8 @@ public class ControleurBoutons implements ActionListener {
 		String text = bouton.getText();
 		Joueur j = this.jeu.getJoueurCourant();
 		switch (text) {
-		case "Boire de l'eau":
-			j.boire();
+		case "Remplir une gourde":
+			j.ramasserObjet(new Gourde(1));
 			this.jeu.updateObservers();
 			break;
 		case "Manger":

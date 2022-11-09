@@ -16,7 +16,7 @@ public class Sac extends Inventaire {
 	 */
 	@Override
 	public void ajouter(Objet o) {
-		if (super.getInventaire().contains(o) || super.getInventaire().size() < this.TAILLE_INVENTAIRE) {
+		if (super.getInventaire().size() < this.TAILLE_INVENTAIRE) {
 			this.insertion(o);
 		}
 	}
