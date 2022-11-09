@@ -2,17 +2,14 @@ package main.java.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import main.java.model.Jeu;
@@ -23,9 +20,11 @@ public class VueInventaire extends JPanel implements Observer {
 
 	private Joueur joueurCourant;
 	private int padding;
+	private List<Rectangle> carresSlots;
 
 	public VueInventaire() {
 		this.padding = 0;
+		this.carresSlots = new ArrayList<Rectangle>();
 	}
 
 	@Override
