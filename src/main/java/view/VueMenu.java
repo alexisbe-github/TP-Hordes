@@ -61,7 +61,6 @@ public class VueMenu extends JPanel implements Observer {
 			b.addActionListener(cb);
 		}
 
-		this.boutonsDehors.add(remplirGourde);
 		this.boutonsDehors.add(passerTour);
 
 		for (JButton b : this.boutonsDehors) {
@@ -102,13 +101,6 @@ public class VueMenu extends JPanel implements Observer {
 						b.setEnabled(true);
 					}
 				}
-				if (b.getText().equals("Remplir une gourde")) {
-					if (this.joueur.getABu() || (!this.joueur.aUneGourde() && !this.joueur.estEnVille())) {
-						b.setEnabled(false);
-					} else {
-						b.setEnabled(true);
-					}
-				}
 				this.add(b);
 			}
 		} else {
@@ -116,7 +108,7 @@ public class VueMenu extends JPanel implements Observer {
 			for (JButton b : this.boutonsDehors) {
 				switch (b.getText()) {
 				case "Remplir une gourde":
-					if (this.joueur.getABu() || !this.joueur.estEnVille()) {
+					if (!this.joueur.estEnVille()) {
 						b.setEnabled(false);
 					} else {
 						b.setEnabled(true);

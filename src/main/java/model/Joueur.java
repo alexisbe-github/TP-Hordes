@@ -15,7 +15,6 @@ public class Joueur {
 	private Point position;
 	private int pv, pa;
 	private Sac sac;
-	private boolean aBu;
 	private final int PV_MAX = 100;
 	private final int PA_MAX = 10;
 	private final int PA_INIT = 6;
@@ -38,7 +37,6 @@ public class Joueur {
 		this.pv = this.PV_MAX;
 		this.pa = this.PA_INIT;
 		this.sac = new Sac();
-		this.aBu = false;
 		this.position = new Point(this.POINT_X, this.POINT_Y);
 		this.carteVersionJoueur = new Case[25][25];
 		for (int i = 0; i < 25; i++) {
@@ -154,16 +152,12 @@ public class Joueur {
 	}
 
 	public void boire() {
-		if (!this.aBu) {
-			if (this.estEnVille()) {
+		if (this.estEnVille()) {
+			this.ajouterPa(6);
+		} else {
+			if (this.aUneGourde()) {
 				this.ajouterPa(6);
-				this.aBu = true;
-			} else {
-				if (this.aUneGourde()) {
-					this.ajouterPa(6);
-					this.enleverObjet(new Gourde(1));
-					this.aBu = true;
-				}
+				this.enleverObjet(new Gourde(1));
 			}
 		}
 	}
@@ -191,7 +185,7 @@ public class Joueur {
 	public void updateCarteDuJoueur(int x, int y, Case c) {
 		this.carteVersionJoueur[x][y] = c;
 	}
-	
+
 	public void infligerDegats(int degats) {
 		this.pv -= degats;
 	}
@@ -201,14 +195,6 @@ public class Joueur {
 		if (this.pa > this.PA_MAX) {
 			this.pa = this.PA_MAX;
 		}
-	}
-
-	public void setABu(boolean bu) {
-		this.aBu = bu;
-	}
-
-	public boolean getABu() {
-		return this.aBu;
 	}
 
 }

@@ -73,9 +73,6 @@ public class Jeu extends Observable {
 		this.tour += 2;
 		for (Joueur j : this.joueurs) {
 			j.ajouterPa(4);
-			if (j.getABu()) {
-				j.setABu(false);
-			}
 		}
 	}
 
