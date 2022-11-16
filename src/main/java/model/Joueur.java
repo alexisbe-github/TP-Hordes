@@ -1,6 +1,7 @@
 package main.java.model;
 
 import java.awt.Point;
+import java.util.Iterator;
 import java.util.List;
 
 import main.java.model.carte.Case;
@@ -79,6 +80,23 @@ public class Joueur {
 		this.sac.ajouter(o);
 	}
 
+	/*
+	 * PAR BAPTISTE DONC PRENDRE PRECAUTIONS - DEBUT
+	 * 
+	 * @param c
+	 */
+	
+	public void remplirSac(Case c) {
+		List<Objet> inventaire = c.getLoot().getInventaire();
+		Iterator iter = inventaire.iterator();
+		
+		while (iter.hasNext()) {
+			Objet item = (Objet) iter.next();
+			this.ramasserObjet(item);
+			inventaire.remove(item);
+		}
+	}
+	
 	/**
 	 * Retirer un objet de l'inventaire du sac
 	 * 
