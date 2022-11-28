@@ -20,6 +20,7 @@ public class Case {
 
 	private Case(int a) {
 		this.fouillee = false;
+		this.path = "src/main/resources/unknown.png";
 		this.loot = new ListeItems();
 	}
 

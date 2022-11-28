@@ -32,10 +32,6 @@ public class Jeu extends Observable {
 
 	public void commencerJeu() {
 		this.joueurCourant = 0;
-		this.joueurs.get(0).ramasserObjet(new Gourde(1));
-		this.joueurs.get(0).ramasserObjet(new Planche(50));
-		this.joueurs.get(0).ramasserObjet(new PlaqueMetal(200));
-		this.joueurs.get(0).ramasserObjet(new Gourde(1));
 		this.tour = 0;
 		this.carte.init();
 		this.updateObservers();

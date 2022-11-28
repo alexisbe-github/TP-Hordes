@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import main.java.controller.ControleurBoutons;
 import main.java.controller.ControleurClic;
+import main.java.controller.ControleurInventaire;
 import main.java.model.Jeu;
 import main.java.model.Joueur;
 import main.java.view.VueInfoJeu;
@@ -66,7 +67,9 @@ public class SetupJeu {
 		
 		//Création des controleurs
 		ControleurClic cc = new ControleurClic(panelCenterLeft);
+		ControleurInventaire ci = new ControleurInventaire(panelBot);
 		panelCenterLeft.addMouseListener(cc);
+		panelBot.addMouseListener(ci);
 		
 		//Ajout des observers
 		j.addObserver(panelTop);

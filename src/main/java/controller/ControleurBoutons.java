@@ -24,7 +24,7 @@ public class ControleurBoutons implements ActionListener {
 		Joueur j = this.jeu.getJoueurCourant();
 		switch (text) {
 		case "Remplir une gourde":
-			j.ramasserObjet(new Gourde(1));
+			j.getInventaire().ajouter(new Gourde(1));
 			this.jeu.updateObservers();
 			break;
 		case "Manger":

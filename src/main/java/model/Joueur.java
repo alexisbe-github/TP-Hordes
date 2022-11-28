@@ -70,51 +70,7 @@ public class Joueur {
 	public Sac getInventaire() {
 		return this.sac;
 	}
-
-	/**
-	 * Ramasser un objet pour le mettre dans l'inventaire du sac
-	 * 
-	 * @param o
-	 */
-	public void ramasserObjet(Objet o) {
-		this.sac.ajouter(o);
-	}
-
-	/*
-	 * PAR BAPTISTE DONC PRENDRE PRECAUTIONS - DEBUT
-	 * 
-	 * @param c
-	 */
 	
-	public void remplirSac(Case c) {
-		List<Objet> inventaire = c.getLoot();
-		Iterator iter = inventaire.iterator();
-		
-		while (iter.hasNext()) {
-			Objet item = (Objet) iter.next();
-			this.ramasserObjet(item);
-			inventaire.remove(item);
-		}
-	}
-	
-	/**
-	 * Retirer un objet de l'inventaire du sac
-	 * 
-	 * @param o
-	 */
-	public void enleverObjet(Objet o) {
-		this.sac.retirer(o);
-	}
-
-	/**
-	 * Mettre un objet de l'inventaire dans l'entrepot
-	 * 
-	 * @param o
-	 */
-	public void entreposer(Objet o) {
-		Ville.getVille().getLoot().ajouter(o);
-		this.enleverObjet(o);
-	}
 
 	/**
 	 * Méthode décremntant le nombre de point d'action
@@ -154,30 +110,6 @@ public class Joueur {
 	 */
 	public boolean estEnVille() {
 		return this.position.x == 0 && this.position.y == 0;
-	}
-
-	/**
-	 * Savoir si le joueur porte au moins une gourde sur lui
-	 * 
-	 * @return
-	 */
-	public boolean aUneGourde() {
-		for (Objet item : this.getInventaire()) {
-			if (item.getNom().equals("Gourde"))
-				return true;
-		}
-		return false;
-	}
-
-	public void boire() {
-		if (this.estEnVille()) {
-			this.ajouterPa(6);
-		} else {
-			if (this.aUneGourde()) {
-				this.ajouterPa(6);
-				this.enleverObjet(new Gourde(1));
-			}
-		}
 	}
 
 	/**

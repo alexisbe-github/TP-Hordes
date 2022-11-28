@@ -2,6 +2,7 @@ package main.java.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,15 +15,54 @@ import javax.swing.JPanel;
 
 import main.java.model.Jeu;
 import main.java.model.Joueur;
+import main.java.model.carte.Case;
 import main.java.model.objet.Objet;
+import main.java.model.stockage.Sac;
 
 public class VueInventaire extends JPanel implements Observer {
 
 	private Joueur joueurCourant;
 	private int padding;
-
+	private List<Rectangle> slots;
+	private int cote;
+	private Jeu j;
+	
 	public VueInventaire() {
 		this.padding = 0;
+	}
+	
+	public Jeu getJeu() {
+		return this.j;
+	}
+	
+	public Joueur getJoueurCourant() {
+		return this.joueurCourant;
+	}
+
+	public List<Rectangle> initSlots() {
+		this.slots = new ArrayList<Rectangle>();
+		for (int i = 0; i < 10; i++) {
+			this.slots.add(new Rectangle(this.padding + cote * i + (this.padding * i), 5, cote, cote));
+		}
+		return this.slots;
+	}
+	
+	public boolean clicOnSlot(Point p) {
+		Sac sac = this.joueurCourant.getInventaire();
+		int indice = this.getIndiceClicSlot(p);
+		return indice != -1 && indice < sac.size();
+	}
+	
+	private int getIndiceClicSlot(Point p) {
+		for(int i=0;i<this.slots.size();i++) {
+			if(this.slots.get(i).contains(new Point(p.x,p.y))) return i;
+		}
+		return -1;
+	}
+	
+	public Objet getClicObjet(Point p) {
+		Sac sac = this.joueurCourant.getInventaire();
+		return sac.get(this.getIndiceClicSlot(p));
 	}
 
 	@Override
@@ -31,7 +71,8 @@ public class VueInventaire extends JPanel implements Observer {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 		this.padding = this.getWidth() / 30;
-		int cote = this.getWidth() / 20;
+		this.cote = this.getWidth() / 20;
+		this.initSlots();
 		g.setColor(Color.DARK_GRAY);
 		for (int i = 0; i < 10; i++) {
 			g.fillRect(this.padding + cote * i + (this.padding * i), 5, cote, cote);
@@ -65,8 +106,8 @@ public class VueInventaire extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		Jeu j = (Jeu) o;
-		this.joueurCourant = j.getJoueurCourant();
+		this.j = (Jeu) o;
+		this.joueurCourant = this.j.getJoueurCourant();
 		this.repaint();
 	}
 

@@ -51,28 +51,4 @@ public abstract class Inventaire extends LinkedList<Objet> {
 		}
 	}
 
-	/**
-	 * Suppresion d'un objet en quantité dans l'inventaire, le supprime si la
-	 * quantité baisse à 0
-	 * 
-	 * @param o
-	 */
-	public void retirer(Objet o) {
-		if (o.stackable() && this.contains(o)) {
-			int indexObjet = this.indexOf(o);
-			int qteActuelle = this.get(indexObjet).getQuantite();
-			o.retirerQte(qteActuelle);
-			if (o.getQuantite() == 0) {
-				this.remove(indexObjet);
-			} else {
-				this.set(indexObjet, o);
-			}
-		} else {
-			for (int i = 0; i < this.size(); i++) {
-				Objet obj = this.get(0);
-				if (obj.getNom().equals(o.getNom()))
-					this.remove(i);
-			}
-		}
-	}
 }

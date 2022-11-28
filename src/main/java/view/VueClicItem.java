@@ -13,32 +13,40 @@ import main.java.model.objet.Objet;
 import main.java.model.stockage.ListeItems;
 import main.java.model.stockage.Sac;
 
-public class VueClicItem extends JPopupMenu{
-	
-	public VueClicItem(Objet o,Sac sac, ListeItems li,Jeu j,boolean aClicSurSac) {
-		
-		if(o instanceof Gourde || o instanceof BoissonEnergisante) {
-			JMenuItem interagir = new JMenuItem("Interagir");
-			interagir.addActionListener(e->{
-				
+public class VueClicItem extends JPopupMenu {
+
+	public VueClicItem(Objet o, Sac sac, ListeItems li, Jeu j, boolean aClicSurSac) {
+		if (o instanceof Gourde || o instanceof BoissonEnergisante) {
+			JMenuItem interagir = new JMenuItem("Boire");
+			interagir.addActionListener(e -> {
+				if (aClicSurSac) {
+					sac.remove(o);
+				} else {
+					li.remove(o);
+				}
+				j.updateObservers();
 			});
 			this.add(interagir);
 		}
-		if(aClicSurSac) {
+		if (aClicSurSac) {
 			JMenuItem deposer = new JMenuItem("Déposer");
-			deposer.addActionListener(e->{
-				
+			deposer.addActionListener(e -> {
+				sac.remove(o);
+				li.ajouter(o);
+				j.updateObservers();
 			});
 			this.add(deposer);
-		}else {
+		} else {
 			JMenuItem recuperer = new JMenuItem("Mettre dans le sac");
-			recuperer.addActionListener(e->{
-				sac.ajouter(o);
-				li.retirer(o);
-				j.updateObservers();
+			recuperer.addActionListener(e -> {
+				if (sac.size() < 10) {
+					sac.ajouter(o);
+					li.remove(o);
+					j.updateObservers();
+				}
 			});
 			this.add(recuperer);
 		}
 	}
-	
+
 }
