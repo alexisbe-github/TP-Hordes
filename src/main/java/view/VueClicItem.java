@@ -21,6 +21,7 @@ public class VueClicItem extends JPopupMenu {
 			interagir.addActionListener(e -> {
 				if (aClicSurSac) {
 					sac.remove(o);
+					j.getJoueurCourant().ajouterPa(6);
 				} else {
 					li.remove(o);
 				}

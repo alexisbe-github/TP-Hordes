@@ -35,7 +35,6 @@ public class VueMenu extends JPanel implements Observer {
 		JButton remplirGourde = new JButton("Remplir une gourde");
 		JButton manger = new JButton("Manger");
 		JButton construire = new JButton("Construire une défense");
-		JButton viderSac = new JButton("Vider le sac");
 		JButton passerTour = new JButton("Passer le tour du joueur");
 
 		this.boutonsVille.add(ouvrirVille);
@@ -43,7 +42,6 @@ public class VueMenu extends JPanel implements Observer {
 		this.boutonsVille.add(remplirGourde);
 		this.boutonsVille.add(manger);
 		this.boutonsVille.add(construire);
-		this.boutonsVille.add(viderSac);
 		this.boutonsVille.add(passerTour);
 
 		// Boutons en dehors de la ville
