@@ -20,11 +20,9 @@ public class VueInventaire extends JPanel implements Observer {
 
 	private Joueur joueurCourant;
 	private int padding;
-	private List<Rectangle> carresSlots;
 
 	public VueInventaire() {
 		this.padding = 0;
-		this.carresSlots = new ArrayList<Rectangle>();
 	}
 
 	@Override

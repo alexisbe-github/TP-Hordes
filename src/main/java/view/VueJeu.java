@@ -177,7 +177,7 @@ public class VueJeu extends JPanel implements Observer {
 
 			} else {
 				try {
-					icon = ImageIO.read(new File("src/main/resources/background.png"));
+					icon = ImageIO.read(new File(this.map[vueCourante.x][vueCourante.y].getPath()));
 					zombie = ImageIO.read(new File("src/main/resources/zombie.png"));
 					g.drawImage(icon, this.padding * 2 + cote, this.padding, cote, cote, this);
 					for (int i = 0; i < this.map[vueCourante.x][vueCourante.y].getNbZombie(); i++) {

@@ -11,6 +11,8 @@ public class Case {
 	protected int nbZombie;
 	private final double PROBA_0_ZOMBIE = 0.3;
 	private boolean fouillee;
+	private final String[] CHEMINS = { "bg-1.png" };
+	private String path;
 
 	public Case() {
 		this.init();
@@ -23,6 +25,10 @@ public class Case {
 
 	public static Case initCaseVide() {
 		return new Case(0);
+	}
+	
+	public String getPath() {
+		return this.path;
 	}
 
 	@Override
@@ -43,6 +49,7 @@ public class Case {
 	}
 
 	private void init() {
+		this.path = "src/main/resources/" + CHEMINS[Utilitaire.genererEntier(0, this.CHEMINS.length)];
 		this.fouillee = false;
 		this.loot = new ListeItems();
 		int x = Utilitaire.genererEntier(1, 101);

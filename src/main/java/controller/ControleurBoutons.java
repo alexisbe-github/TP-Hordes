@@ -42,7 +42,7 @@ public class ControleurBoutons implements ActionListener {
 			break;
 		case "Ouvrir portes de la ville":
 			j.ouvrirPortesVille();
-			
+			this.jeu.updateObservers();
 			break;
 		case "Fermer portes de la ville":
 			j.fermerPortesVille();
