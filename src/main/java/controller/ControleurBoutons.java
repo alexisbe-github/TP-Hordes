@@ -33,10 +33,6 @@ public class ControleurBoutons implements ActionListener {
 		case "Construire une défense":
 
 			break;
-		case "Remplir le sac":
-			j.remplirSac(this.jeu.getCaseDuJoueur(j));
-			this.jeu.updateObservers();
-			break;
 		case "Passer le tour du joueur":
 			this.jeu.prochainJoueur();
 			break;

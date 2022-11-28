@@ -67,8 +67,8 @@ public class Joueur {
 		return this.nom;
 	}
 
-	public List<Objet> getInventaire() {
-		return this.sac.getInventaire();
+	public Sac getInventaire() {
+		return this.sac;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Joueur {
 	 */
 	
 	public void remplirSac(Case c) {
-		List<Objet> inventaire = c.getLoot().getInventaire();
+		List<Objet> inventaire = c.getLoot();
 		Iterator iter = inventaire.iterator();
 		
 		while (iter.hasNext()) {

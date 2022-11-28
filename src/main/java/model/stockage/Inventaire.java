@@ -2,22 +2,10 @@ package main.java.model.stockage;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 import main.java.model.objet.Objet;
 
-public abstract class Inventaire {
-
-	private List<Objet> inventaire;
-
-	public Inventaire() {
-		this.inventaire = new LinkedList<Objet>();
-	}
-
-	public List<Objet> getInventaire() {
-		return this.inventaire;
-	}
-
+public abstract class Inventaire extends LinkedList<Objet> {
 
 	@Override
 	public boolean equals(Object obj) {
@@ -29,8 +17,8 @@ public abstract class Inventaire {
 			return false;
 		Inventaire other = (Inventaire) obj;
 		boolean equals = true;
-		for(Objet o: other.getInventaire()) {
-			if(!this.getInventaire().contains(o)) {
+		for (Objet o : this) {
+			if (!this.contains(o)) {
 				equals = false;
 			}
 		}
@@ -40,7 +28,7 @@ public abstract class Inventaire {
 	@Override
 	public String toString() {
 		String res = "[";
-		for(Objet o: this.inventaire) {
+		for (Objet o : this) {
 			res += o + "\n";
 		}
 		return res + "]";
@@ -55,15 +43,11 @@ public abstract class Inventaire {
 	 * @param o
 	 */
 	protected void insertion(Objet o) {
-		if (o.stackable()) {
-			if (this.inventaire.contains(o)) {
-				int indexObjet = this.inventaire.indexOf(o);
-				this.inventaire.get(indexObjet).ajouterQte(o.getQuantite());
-			} else {
-				this.inventaire.add(o);
-			}
+		if (o.stackable() && this.contains(o)) {
+			int indexObjet = this.indexOf(o);
+			this.get(indexObjet).ajouterQte(o.getQuantite());
 		} else {
-			this.inventaire.add(o);
+			this.add(o);
 		}
 	}
 
@@ -74,22 +58,20 @@ public abstract class Inventaire {
 	 * @param o
 	 */
 	public void retirer(Objet o) {
-		if (o.stackable()) {
-			if (this.inventaire.contains(o)) {
-				int indexObjet = this.inventaire.indexOf(o);
-				int qteActuelle = this.inventaire.get(indexObjet).getQuantite();
-				o.retirerQte(qteActuelle);
-				if (o.getQuantite() == 0) {
-					this.inventaire.remove(indexObjet);
-				} else {
-					this.inventaire.set(indexObjet, o);
-				}
+		if (o.stackable() && this.contains(o)) {
+			int indexObjet = this.indexOf(o);
+			int qteActuelle = this.get(indexObjet).getQuantite();
+			o.retirerQte(qteActuelle);
+			if (o.getQuantite() == 0) {
+				this.remove(indexObjet);
+			} else {
+				this.set(indexObjet, o);
 			}
 		} else {
-			for (int i = 0; i < this.inventaire.size(); i++) {
-				Objet obj = this.inventaire.get(0);
+			for (int i = 0; i < this.size(); i++) {
+				Objet obj = this.get(0);
 				if (obj.getNom().equals(o.getNom()))
-					this.inventaire.remove(i);
+					this.remove(i);
 			}
 		}
 	}

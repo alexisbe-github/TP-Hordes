@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import main.java.model.objet.Objet;
+import main.java.view.VueClicItem;
 import main.java.view.VueJeu;
 
 public class ControleurClic implements MouseListener {
@@ -21,13 +23,13 @@ public class ControleurClic implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Point p = new Point(e.getX(), e.getY());
-		
-		//Si on clic sur un point de la carte
+
+		// Si on clic sur un point de la carte
 		if (p.getX() > vj.getPadding() && p.getX() < vj.getPadding() + vj.getCote() && p.getY() > vj.getPadding()
 				&& p.getY() < vj.getPadding() + vj.getCote()) {
-			double longueurCellule = (double) vj.getCote()/ 25;
-			int x = (int) ((e.getX() - vj.getPadding())/longueurCellule);
-			int y =  (int) ((e.getY() - vj.getPadding())/longueurCellule);
+			double longueurCellule = (double) vj.getCote() / 25;
+			int x = (int) ((e.getX() - vj.getPadding()) / longueurCellule);
+			int y = (int) ((e.getY() - vj.getPadding()) / longueurCellule);
 			this.vj.setVueCourant(x, y);
 		} else {
 			if (vj.getTop().contains(p)) {
@@ -41,6 +43,12 @@ public class ControleurClic implements MouseListener {
 			}
 			if (vj.getRight().contains(p)) {
 				this.vj.getJeu().deplacerDroite(this.vj.getJoueurCourant());
+			}
+			if (vj.clicOnSlot(p)) {
+				Objet o = vj.getClicObjet(p);
+				VueClicItem vci = new VueClicItem(o, this.vj.getJoueurCourant().getInventaire(),
+						this.vj.getCaseCourante().getLoot(),this.vj.getJeu(), false);
+				vci.show(vj, p.x, p.y);
 			}
 		}
 

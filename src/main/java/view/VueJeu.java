@@ -5,11 +5,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -31,7 +33,44 @@ public class VueJeu extends JPanel implements Observer {
 	private Jeu j;
 	private Polygon top, left, right, bot;
 	private Point vueCourante;
+	private List<Rectangle> slots;
 	private int cote;
+
+	public VueJeu() {
+		this.vueCourante = new Point(12, 12);
+		this.setLayout(null);
+	}
+
+	public List<Rectangle> initSlots() {
+		this.slots = new ArrayList<Rectangle>();
+		for (int i = 0; i < 6; i++) {
+			this.slots.add(new Rectangle(this.getWidth() - 2 * this.padding,
+					this.padding * i + this.padding + 20 * i + 2, this.padding, this.padding));
+		}
+		return this.slots;
+	}
+	
+	public boolean clicOnSlot(Point p) {
+		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()].getLoot();
+		int indice = this.getIndiceClicSlot(p);
+		return indice != -1 && indice < loot.size() && this.joueurCourant.getPosX() == this.vueCourante.x && this.joueurCourant.getPosY() == this.vueCourante.y;
+	}
+	
+	private int getIndiceClicSlot(Point p) {
+		for(int i=0;i<this.slots.size();i++) {
+			if(this.slots.get(i).contains(new Point(p.x,p.y))) return i;
+		}
+		return -1;
+	}
+	
+	public Case getCaseCourante() {
+		return this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()];
+	}
+	
+	public Objet getClicObjet(Point p) {
+		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()].getLoot();
+		return loot.get(this.getIndiceClicSlot(p));
+	}
 
 	public Joueur getJoueurCourant() {
 		return joueurCourant;
@@ -71,11 +110,6 @@ public class VueJeu extends JPanel implements Observer {
 		return bot;
 	}
 
-	public VueJeu() {
-		this.vueCourante = new Point(12, 12);
-		this.setLayout(null);
-	}
-
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -84,6 +118,7 @@ public class VueJeu extends JPanel implements Observer {
 			g2.setColor(Color.gray);
 			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			this.padding = this.getHeight() / 10;
+			this.initSlots();
 			g2.setColor(new Color(85, 107, 47));
 			cote = this.getHeight() - 2 * this.padding;
 			g2.fillRect(this.padding, this.padding, cote, cote);
@@ -100,7 +135,7 @@ public class VueJeu extends JPanel implements Observer {
 					}
 				}
 			}
-			
+
 			// Indication case courante
 			if (this.joueurCourant != null) {
 				int x = this.joueurCourant.getPosX();
@@ -125,8 +160,8 @@ public class VueJeu extends JPanel implements Observer {
 			g2.setColor(Color.red);
 			if (Ville.getVille().getPortesOuvertes()) {
 				// Mur du haut
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
-						this.padding + 12 * largeurCase, longueurCase / 3, largeurCase / 10));
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase,
+						longueurCase / 3, largeurCase / 10));
 				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + ((longueurCase / 3) * 2),
 						this.padding + 12 * largeurCase, longueurCase / 3, largeurCase / 10));
 
@@ -137,8 +172,8 @@ public class VueJeu extends JPanel implements Observer {
 						this.padding + 12 * largeurCase + largeurCase - 1, longueurCase / 3, largeurCase / 10));
 
 				// Mur de gauche
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
-						this.padding + 12 * largeurCase, 2, largeurCase / 3));
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase, 2,
+						largeurCase / 3));
 				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
 						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
 
@@ -148,8 +183,8 @@ public class VueJeu extends JPanel implements Observer {
 				g2.fill(new Rectangle2D.Double(this.padding + 13 * longueurCase - 2,
 						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
 			} else {
-				g2.draw(new Rectangle2D.Double(this.padding + 12 * longueurCase,
-						this.padding + 12 * largeurCase, longueurCase, largeurCase));
+				g2.draw(new Rectangle2D.Double(this.padding + 12 * longueurCase, this.padding + 12 * largeurCase,
+						longueurCase, largeurCase));
 			}
 
 			// Dessin des flèches
@@ -194,8 +229,7 @@ public class VueJeu extends JPanel implements Observer {
 					g2.setColor(new Color(102, 51, 0));
 					g2.fill(new Rectangle2D.Double(this.getWidth() - 2 * this.padding, this.padding, this.padding,
 							cote));
-					List<Objet> loot = this.j.getCarte().getCarte()[vueCourante.x][vueCourante.y].getLoot()
-							.getInventaire();
+					List<Objet> loot = this.j.getCarte().getCarte()[vueCourante.x][vueCourante.y].getLoot();
 					for (Objet o : loot) {
 
 						try {

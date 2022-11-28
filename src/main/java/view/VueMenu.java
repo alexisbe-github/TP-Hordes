@@ -46,16 +46,14 @@ public class VueMenu extends JPanel implements Observer {
 		this.boutonsVille.add(viderSac);
 		this.boutonsVille.add(passerTour);
 
-		// Boutons en dehors de la vilel
+		// Boutons en dehors de la ville
 		JButton fouiller = new JButton("Fouiller la zone (1PA)");
 		JButton attaquer = new JButton("Tuer un zombie (1PA)");
 		JButton communiquer = new JButton("M‡J case (1PA)");
-		JButton remplirSac = new JButton("Remplir le sac");
 
 		this.boutonsDehors.add(fouiller);
 		this.boutonsDehors.add(attaquer);
 		this.boutonsDehors.add(communiquer);
-		this.boutonsDehors.add(remplirSac);
 
 		for (JButton b : this.boutonsVille) {
 			b.addActionListener(cb);
