@@ -82,6 +82,7 @@ public class VueMenu extends JPanel implements Observer {
 
 	private void updateMenu() {
 		this.removeAll();
+
 		if (enVille) {
 			this.setLayout(new GridLayout(this.boutonsVille.size(), 1));
 			for (int i = 0; i < this.boutonsVille.size(); i++) {
@@ -92,16 +93,23 @@ public class VueMenu extends JPanel implements Observer {
 					} else {
 						b.setText("Fermer portes de la ville");
 					}
-					if(this.joueur.getPa() < 1) {
+					if (this.joueur.getPa() < 1) {
 						b.setEnabled(false);
-					}else {
+					} else {
 						b.setEnabled(true);
 					}
 				}
-				if(b.getText().equals("Boire au puits")) {
-					if(this.joueur.aBu()) {
+				if (b.getText().equals("Boire au puits")) {
+					if (this.joueur.aBu()) {
 						b.setEnabled(false);
-					}else {
+					} else {
+						b.setEnabled(true);
+					}
+				}
+				if (b.getText().equals("Lire le journal")) {
+					if (j.getJour() == 1) {
+						b.setEnabled(false);
+					} else {
 						b.setEnabled(true);
 					}
 				}
@@ -137,6 +145,13 @@ public class VueMenu extends JPanel implements Observer {
 					break;
 				case "MàJ case (1PA)":
 					if (this.joueur.getPa() < 1) {
+						b.setEnabled(false);
+					} else {
+						b.setEnabled(true);
+					}
+					break;
+				case "Lire le journal":
+					if (j.getJour() == 1) {
 						b.setEnabled(false);
 					} else {
 						b.setEnabled(true);

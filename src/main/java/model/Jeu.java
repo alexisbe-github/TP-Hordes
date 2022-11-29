@@ -74,6 +74,7 @@ public class Jeu extends Observable {
 	}
 	
 	private void prochainJour() {
+		this.journal.setJournal();
 		for(Joueur j: this.joueurs) {
 			if(j.aBu()) {
 				j.resetABu();
@@ -211,8 +212,8 @@ public class Jeu extends Observable {
 				j.updateCarteDuJoueur(x, y, c);
 			}
 			this.getJoueurCourant().ajouterPa(-1);
-			String journalContent = joueur.getNom() + " a mis la carte à jour";
-			this.journal.addLigne("");
+			String journalContent = joueur.getNom() + " a mis la carte à jour en x:" + (x-12) + " y:" + (y-12);
+			this.journal.addLigne(journalContent);
 		}
 		this.updateObservers();
 	}
