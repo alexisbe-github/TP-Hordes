@@ -29,7 +29,6 @@ public class Jeu extends Observable {
 		this.carte = new Carte(joueurs);
 		this.joueurCourant = 0;
 		this.tour = 0;
-		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
 	}
 
 	public void commencerJeu() {
