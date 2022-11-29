@@ -19,6 +19,7 @@ public class Jeu extends Observable {
 	private int tour;
 	private int joueurCourant;
 	private List<Joueur> joueurs;
+	private Journal journal;
 
 	public Jeu(List<Joueur> joueurs) {
 		this.init(joueurs);
@@ -29,6 +30,8 @@ public class Jeu extends Observable {
 		this.carte = new Carte(joueurs);
 		this.joueurCourant = 0;
 		this.tour = 0;
+		this.journal = new Journal();
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
 	}
 
 	public void commencerJeu() {
@@ -40,6 +43,10 @@ public class Jeu extends Observable {
 
 	public Carte getCarte() {
 		return this.carte;
+	}
+	
+	public Journal getJournal() {
+		return this.journal;
 	}
 
 	public int getIndexJoueurCourant() {
@@ -60,10 +67,18 @@ public class Jeu extends Observable {
 		if (this.joueurCourant == 0) {
 			this.prochainTour();
 			if (this.tour % 24 == 0) {
-
+				this.prochainJour();
 			}
 		}
 		this.updateObservers();
+	}
+	
+	private void prochainJour() {
+		for(Joueur j: this.joueurs) {
+			if(j.aBu()) {
+				j.resetABu();
+			}
+		}
 	}
 
 	private void prochainTour() {
@@ -76,8 +91,10 @@ public class Jeu extends Observable {
 					j.infligerDegats(5);
 				}
 			}
+			if(j.getPv() <= 0) {
+				this.joueurs.remove(j);
+			}
 		}
-		this.updateObservers();
 	}
 
 	public List<Joueur> getJoueurs() {
@@ -188,12 +205,14 @@ public class Jeu extends Observable {
 		}
 	}
 
-	public void majCarte(Case c, int x, int y) {
+	public void majCarte(Joueur joueur,Case c, int x, int y) {
 		if (this.getJoueurCourant().getPa() > 0) {
 			for (Joueur j : this.joueurs) {
 				j.updateCarteDuJoueur(x, y, c);
 			}
 			this.getJoueurCourant().ajouterPa(-1);
+			String journalContent = joueur.getNom() + " a mis la carte à jour";
+			this.journal.addLigne("");
 		}
 		this.updateObservers();
 	}

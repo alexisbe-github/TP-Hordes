@@ -7,6 +7,7 @@ import main.java.model.carte.Ville;
 import main.java.model.objet.BoissonEnergisante;
 import main.java.model.objet.Gourde;
 import main.java.model.objet.Objet;
+import main.java.model.objet.Ration;
 import main.java.model.stockage.Sac;
 
 public class Joueur {
@@ -77,6 +78,17 @@ public class Joueur {
 	public Sac getInventaire() {
 		return this.sac;
 	}
+	
+	/**
+	 * 
+	 */
+	public void mangerRation() {
+		Ration r = new Ration(1);
+		if(this.sac.contains(r)) {
+			this.sac.remove(r);
+			this.ajouterPa(6);
+		}
+	}
 
 	/**
 	 * Savoir si le joueur porte au moins une gourde sur lui
@@ -84,11 +96,7 @@ public class Joueur {
 	 * @return
 	 */
 	public boolean aUneGourde() {
-		for (Objet item : this.getInventaire()) {
-			if (item.getNom().equals("Gourde"))
-				return true;
-		}
-		return false;
+		return this.sac.contains(new Gourde(1));
 	}
 	
 	public void boireAuPuitDeLaVille() {
@@ -100,6 +108,10 @@ public class Joueur {
 
 	public boolean aBu() {
 		return this.aBu;
+	}
+	
+	public void resetABu() {
+		this.aBu = false;
 	}
 	
 	public void boire() {

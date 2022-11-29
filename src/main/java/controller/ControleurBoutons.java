@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import main.java.model.Jeu;
 import main.java.model.Joueur;
 import main.java.model.objet.Gourde;
+import main.java.view.VueJournal;
 
 public class ControleurBoutons implements ActionListener {
 
@@ -23,16 +24,13 @@ public class ControleurBoutons implements ActionListener {
 		String text = bouton.getText();
 		Joueur j = this.jeu.getJoueurCourant();
 		switch (text) {
-		case "Boire au puit":
+		case "Boire au puits":
 			j.boireAuPuitDeLaVille();
 			this.jeu.updateObservers();
 			break;
 		case "Remplir une gourde":
 			j.getInventaire().ajouter(new Gourde(1));
 			this.jeu.updateObservers();
-			break;
-		case "Manger":
-			
 			break;
 		case "Construire une défense":
 
@@ -52,12 +50,13 @@ public class ControleurBoutons implements ActionListener {
 			this.jeu.fouiller(this.jeu.getCaseDuJoueur(j),j);
 			break;
 		case "MàJ case (1PA)":
-			this.jeu.majCarte(this.jeu.getCaseDuJoueur(j), j.getPosX(), j.getPosY());
+			this.jeu.majCarte(j,this.jeu.getCaseDuJoueur(j), j.getPosX(), j.getPosY());
 			break;
 		case "Tuer un zombie (1PA)":
 			this.jeu.tuerZombie(this.jeu.getCaseDuJoueur(j));
 			break;
 		case "Lire le journal":
+			new VueJournal(this.jeu.getJournal());
 			break;
 		}
 	}

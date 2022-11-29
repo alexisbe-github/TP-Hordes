@@ -55,6 +55,16 @@ public class VueClicItem extends JPopupMenu {
 			});
 			this.add(interagir);
 		}
+		if(o.getNom().equals("Ration")) {
+			JMenuItem interagir = new JMenuItem("Manger");
+			interagir.addActionListener(e -> {
+				if (aClicSurSac) {
+					j.getJoueurCourant().boireBoissonEnergisante();
+					j.updateObservers();
+				}
+			});
+			this.add(interagir);
+		}
 	}
 
 }
