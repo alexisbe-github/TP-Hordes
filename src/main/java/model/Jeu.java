@@ -6,6 +6,7 @@ import java.util.Observable;
 import main.java.model.carte.Carte;
 import main.java.model.carte.Case;
 import main.java.model.carte.Ville;
+import main.java.model.objet.BoissonEnergisante;
 import main.java.model.objet.Gourde;
 import main.java.model.objet.Planche;
 import main.java.model.objet.PlaqueMetal;
@@ -28,6 +29,7 @@ public class Jeu extends Observable {
 		this.carte = new Carte(joueurs);
 		this.joueurCourant = 0;
 		this.tour = 0;
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
 	}
 
 	public void commencerJeu() {
@@ -58,18 +60,25 @@ public class Jeu extends Observable {
 		this.joueurCourant %= this.joueurs.size();
 		if (this.joueurCourant == 0) {
 			this.prochainTour();
-			if(this.tour % 24 == 0) {
-				
+			if (this.tour % 24 == 0) {
+
 			}
 		}
 		this.updateObservers();
 	}
 
-	public void prochainTour() {
+	private void prochainTour() {
 		this.tour += 2;
 		for (Joueur j : this.joueurs) {
 			j.ajouterPa(4);
+			if (j.aBuBoissonEnergisante()) {
+				j.incrementCompteurBoissonEnergisante();
+				if (j.getCompteurBoissonEnergisante() > 3) {
+					j.infligerDegats(5);
+				}
+			}
 		}
+		this.updateObservers();
 	}
 
 	public List<Joueur> getJoueurs() {

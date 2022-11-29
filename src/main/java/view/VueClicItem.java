@@ -16,19 +16,6 @@ import main.java.model.stockage.Sac;
 public class VueClicItem extends JPopupMenu {
 
 	public VueClicItem(Objet o, Sac sac, ListeItems li, Jeu j, boolean aClicSurSac) {
-		if (o instanceof Gourde || o instanceof BoissonEnergisante) {
-			JMenuItem interagir = new JMenuItem("Boire");
-			interagir.addActionListener(e -> {
-				if (aClicSurSac) {
-					sac.remove(o);
-					j.getJoueurCourant().ajouterPa(6);
-				} else {
-					li.remove(o);
-				}
-				j.updateObservers();
-			});
-			this.add(interagir);
-		}
 		if (aClicSurSac) {
 			JMenuItem deposer = new JMenuItem("Déposer");
 			deposer.addActionListener(e -> {
@@ -47,6 +34,26 @@ public class VueClicItem extends JPopupMenu {
 				}
 			});
 			this.add(recuperer);
+		}
+		if (o.getNom().equals("Gourde") && !j.getJoueurCourant().aBu()) {
+			JMenuItem interagir = new JMenuItem("Boire");
+			interagir.addActionListener(e -> {
+				if (aClicSurSac) {
+					j.getJoueurCourant().boire();
+					j.updateObservers();
+				}
+			});
+			this.add(interagir);
+		}
+		if(o.getNom().equals("Boisson énergisante")) {
+			JMenuItem interagir = new JMenuItem("Boire");
+			interagir.addActionListener(e -> {
+				if (aClicSurSac) {
+					j.getJoueurCourant().boireBoissonEnergisante();
+					j.updateObservers();
+				}
+			});
+			this.add(interagir);
 		}
 	}
 

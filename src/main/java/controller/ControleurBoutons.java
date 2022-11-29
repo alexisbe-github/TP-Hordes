@@ -23,6 +23,10 @@ public class ControleurBoutons implements ActionListener {
 		String text = bouton.getText();
 		Joueur j = this.jeu.getJoueurCourant();
 		switch (text) {
+		case "Boire au puit":
+			j.boireAuPuitDeLaVille();
+			this.jeu.updateObservers();
+			break;
 		case "Remplir une gourde":
 			j.getInventaire().ajouter(new Gourde(1));
 			this.jeu.updateObservers();

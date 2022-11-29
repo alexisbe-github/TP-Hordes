@@ -1,11 +1,10 @@
 package main.java.model;
 
 import java.awt.Point;
-import java.util.Iterator;
-import java.util.List;
 
 import main.java.model.carte.Case;
 import main.java.model.carte.Ville;
+import main.java.model.objet.BoissonEnergisante;
 import main.java.model.objet.Gourde;
 import main.java.model.objet.Objet;
 import main.java.model.stockage.Sac;
@@ -16,6 +15,8 @@ public class Joueur {
 	private Point position;
 	private int pv, pa;
 	private Sac sac;
+	private boolean aBu;
+	private int compteurBoissonEnergisante;
 	private final int PV_MAX = 100;
 	private final int PA_MAX = 10;
 	private final int PA_INIT = 6;
@@ -37,6 +38,8 @@ public class Joueur {
 		this.nom = nom;
 		this.pv = this.PV_MAX;
 		this.pa = this.PA_INIT;
+		this.aBu = false;
+		this.compteurBoissonEnergisante = -1;
 		this.sac = new Sac();
 		this.position = new Point(this.POINT_X, this.POINT_Y);
 		this.carteVersionJoueur = new Case[25][25];
@@ -49,6 +52,10 @@ public class Joueur {
 				}
 			}
 		}
+	}
+	
+	public boolean aBuBoissonEnergisante() {
+		return this.compteurBoissonEnergisante != -1;
 	}
 
 	public int getPv() {
@@ -70,8 +77,56 @@ public class Joueur {
 	public Sac getInventaire() {
 		return this.sac;
 	}
-	
 
+	/**
+	 * Savoir si le joueur porte au moins une gourde sur lui
+	 * 
+	 * @return
+	 */
+	public boolean aUneGourde() {
+		for (Objet item : this.getInventaire()) {
+			if (item.getNom().equals("Gourde"))
+				return true;
+		}
+		return false;
+	}
+	
+	public void boireAuPuitDeLaVille() {
+		if(!this.aBu && this.estEnVille()) {
+			this.ajouterPa(6);
+			this.aBu = true;
+		}
+	}
+
+	public boolean aBu() {
+		return this.aBu;
+	}
+	
+	public void boire() {
+		if (!this.aBu && this.aUneGourde()) {
+			this.ajouterPa(6);
+			this.sac.remove(new Gourde(1));
+			this.aBu = true;
+		}
+	}
+
+	/**
+	 * Le joueur boit une boisson énergisante, on lui réinitialise son compteur
+	 */
+	public void boireBoissonEnergisante() {
+		this.compteurBoissonEnergisante = 0;
+		this.ajouterPa(6);
+		this.sac.remove(new BoissonEnergisante(1));
+	}
+	
+	public int getCompteurBoissonEnergisante() {
+		return this.compteurBoissonEnergisante;
+	}
+	
+	public void incrementCompteurBoissonEnergisante() {
+		this.compteurBoissonEnergisante++;
+	}
+	
 	/**
 	 * Méthode décremntant le nombre de point d'action
 	 */

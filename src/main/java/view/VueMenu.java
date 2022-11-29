@@ -33,14 +33,14 @@ public class VueMenu extends JPanel implements Observer {
 		JButton ouvrirVille = new JButton("Ouvrir portes de la ville");
 		JButton gazette = new JButton("Lire le journal");
 		JButton remplirGourde = new JButton("Remplir une gourde");
-		JButton manger = new JButton("Manger");
+		JButton boire = new JButton("Boire au puit");
 		JButton construire = new JButton("Construire une défense");
 		JButton passerTour = new JButton("Passer le tour du joueur");
 
 		this.boutonsVille.add(ouvrirVille);
 		this.boutonsVille.add(gazette);
 		this.boutonsVille.add(remplirGourde);
-		this.boutonsVille.add(manger);
+		this.boutonsVille.add(boire);
 		this.boutonsVille.add(construire);
 		this.boutonsVille.add(passerTour);
 
@@ -92,6 +92,13 @@ public class VueMenu extends JPanel implements Observer {
 						b.setText("Fermer portes de la ville");
 					}
 					if(this.joueur.getPa() < 1) {
+						b.setEnabled(false);
+					}else {
+						b.setEnabled(true);
+					}
+				}
+				if(b.getText().equals("Boire au puit")) {
+					if(this.joueur.aBu()) {
 						b.setEnabled(false);
 					}else {
 						b.setEnabled(true);
