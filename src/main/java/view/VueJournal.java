@@ -12,7 +12,7 @@ public class VueJournal extends JFrame{
 
 	public VueJournal(Journal journal) {
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setBounds(100,100,tailleEcran.width/6, tailleEcran.height/4);
+		this.setBounds(100,100,tailleEcran.width/6, tailleEcran.height/2);
 		JTextArea textArea = new JTextArea();
 		for(String s:journal.getJournal()) {
 			textArea.setText(textArea.getText()+"\n"+s);
