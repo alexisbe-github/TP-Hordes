@@ -44,31 +44,35 @@ public class VueJeu extends JPanel implements Observer {
 	public List<Rectangle> initSlots() {
 		this.slots = new ArrayList<Rectangle>();
 		for (int i = 0; i < 6; i++) {
-			this.slots.add(new Rectangle(this.getWidth() - 2 * this.padding,
+			this.slots.add(new Rectangle(this.getWidth() - this.padding - 5,
 					this.padding * i + this.padding + 20 * i + 2, this.padding, this.padding));
 		}
 		return this.slots;
 	}
-	
+
 	public boolean clicOnSlot(Point p) {
-		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()].getLoot();
+		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()]
+				.getLoot();
 		int indice = this.getIndiceClicSlot(p);
-		return indice != -1 && indice < loot.size() && this.joueurCourant.getPosX() == this.vueCourante.x && this.joueurCourant.getPosY() == this.vueCourante.y;
+		return indice != -1 && indice < loot.size() && this.joueurCourant.getPosX() == this.vueCourante.x
+				&& this.joueurCourant.getPosY() == this.vueCourante.y;
 	}
-	
+
 	private int getIndiceClicSlot(Point p) {
-		for(int i=0;i<this.slots.size();i++) {
-			if(this.slots.get(i).contains(new Point(p.x,p.y))) return i;
+		for (int i = 0; i < this.slots.size(); i++) {
+			if (this.slots.get(i).contains(new Point(p.x, p.y)))
+				return i;
 		}
 		return -1;
 	}
-	
+
 	public Case getCaseCourante() {
 		return this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()];
 	}
-	
+
 	public Objet getClicObjet(Point p) {
-		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()].getLoot();
+		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()]
+				.getLoot();
 		return loot.get(this.getIndiceClicSlot(p));
 	}
 
@@ -227,18 +231,19 @@ public class VueJeu extends JPanel implements Observer {
 				int i = 0;
 				if (this.map[vueCourante.x][vueCourante.y].estFouillee()) {
 					g2.setColor(new Color(102, 51, 0));
-					g2.fill(new Rectangle2D.Double(this.getWidth() - 2 * this.padding, this.padding, this.padding,
+					g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5, this.padding, this.padding,
 							cote));
 					List<Objet> loot = this.j.getCarte().getCarte()[vueCourante.x][vueCourante.y].getLoot();
 					for (Objet o : loot) {
 
 						try {
 							icon = o.getSpritePath();
-							g.drawImage(icon, this.getWidth() - 2 * this.padding,
-									this.padding * i + this.padding + 20 * i + 2, this.padding, this.padding, this);
+							g.drawImage(icon, this.getWidth() - this.padding - 5,
+									this.padding * i + this.padding + 20 * i + 2, this.padding - 5, this.padding - 5,
+									this);
 							g.setColor(Color.white);
 							if (o.getQuantite() > 1) {
-								g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - 2 * this.padding,
+								g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - this.padding - 5,
 										this.padding * i + this.padding + 20 * i + 10);
 							}
 							i++;
