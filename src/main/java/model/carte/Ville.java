@@ -13,6 +13,12 @@ public class Ville extends Case {
 		this.nbZombie = 0;
 		this.portesOuvertes = false;
 		this.loot = new ListeItems();
+		this.path = "src/main/resources/";
+		if(this.portesOuvertes) {
+			this.path += "ville1.png";
+		}else {
+			this.path += "ville2.png";
+		}
 	}
 
 	/**
@@ -41,10 +47,12 @@ public class Ville extends Case {
 	}
 
 	public void ouvrirPortes() {
+		this.path = "src/main/resources/ville1.png";
 		this.portesOuvertes = true;
 	}
 
 	public void fermerPortes() {
+		this.path = "src/main/resources/ville2.png";
 		this.portesOuvertes = false;
 	}
 

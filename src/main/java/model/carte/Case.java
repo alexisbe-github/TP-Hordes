@@ -12,7 +12,7 @@ public class Case {
 	private final double PROBA_0_ZOMBIE = 0.3;
 	private boolean fouillee;
 	private final String[] CHEMINS = { "bg-1.png" };
-	private String path;
+	protected String path;
 
 	public Case() {
 		this.init();

@@ -213,7 +213,13 @@ public class VueJeu extends JPanel implements Observer {
 			// Dessin de la case séléctionnée
 			BufferedImage icon, zombie;
 			if (this.vueCourante.x == 12 && this.vueCourante.y == 12) {
-
+				try {
+					icon = ImageIO.read(new File(this.map[vueCourante.x][vueCourante.y].getPath()));
+					g.drawImage(icon, this.padding * 2 + cote, this.padding, cote, cote, this);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 				try {
 					icon = ImageIO.read(new File(this.map[vueCourante.x][vueCourante.y].getPath()));
