@@ -47,6 +47,13 @@ public class ControleurClic implements MouseListener {
 				this.vj.getJeu().deplacerDroite(this.vj.getJoueurCourant());
 			}
 			
+			if(vj.getTopEntrepot().contains(p)) {
+				this.vj.decrementCompteurEntrepot();
+			}
+			if(vj.getBotEntrepot().contains(p)) {
+				this.vj.incrementCompteurEntrepot();
+			}
+			
 			//Si on clique sur un item par terre sur la case
 			if (vj.clicOnSlot(p)) {
 				Objet o = vj.getClicObjet(p);

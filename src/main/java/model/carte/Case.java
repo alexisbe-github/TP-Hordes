@@ -2,12 +2,13 @@ package main.java.model.carte;
 
 import java.util.Objects;
 
+import main.java.model.stockage.Inventaire;
 import main.java.model.stockage.ListeItems;
 import main.java.utilitaire.Utilitaire;
 
 public class Case {
 
-	protected ListeItems loot;
+	protected Inventaire loot;
 	protected int nbZombie;
 	private final double PROBA_0_ZOMBIE = 0.3;
 	private boolean fouillee;
@@ -69,7 +70,7 @@ public class Case {
 		this.nbZombie--;
 	}
 
-	public ListeItems getLoot() {
+	public Inventaire getLoot() {
 		return this.loot;
 	}
 	

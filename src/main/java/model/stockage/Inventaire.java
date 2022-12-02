@@ -37,8 +37,7 @@ public abstract class Inventaire extends LinkedList<Objet> {
 	public abstract void ajouter(Objet o);
 
 	/**
-	 * Insertion d'un objet en quantité dans l'inventaire, méthode commune aux
-	 * classes filles, appelée dans ajouter(Objet o)
+	 * Insertion d'un objet dans l'inventaire, méthode appelée par des classe filles
 	 * 
 	 * @param o
 	 */

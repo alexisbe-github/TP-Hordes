@@ -1,7 +1,7 @@
 package main.java.model.carte;
 
 import main.java.model.objet.Ration;
-import main.java.model.stockage.ListeItems;
+import main.java.model.stockage.Entrepot;
 
 public class Ville extends Case {
 
@@ -12,22 +12,21 @@ public class Ville extends Case {
 	private Ville() {
 		this.nbZombie = 0;
 		this.portesOuvertes = false;
-		this.loot = new ListeItems();
+		this.loot = new Entrepot();
 		this.path = "src/main/resources/";
-		if(this.portesOuvertes) {
+		if (this.portesOuvertes) {
 			this.path += "ville1.png";
-		}else {
+		} else {
 			this.path += "ville2.png";
 		}
+		this.init();
 	}
 
 	/**
 	 * Initialisation de l'entrepot
 	 */
 	private void init() {
-		for (int i = 0; i < this.NB_RATION_INIT; i++) {
-			this.loot.ajouter(new Ration(50));
-		}
+		this.loot.ajouter(new Ration(this.NB_RATION_INIT));
 	}
 
 	/**

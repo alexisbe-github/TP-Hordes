@@ -31,19 +31,40 @@ public class VueJeu extends JPanel implements Observer {
 	private Case[][] map;
 	private Joueur joueurCourant;
 	private Jeu j;
-	private Polygon top, left, right, bot;
+	private Polygon top, left, right, bot, topEntrepot, botEntrepot;
+
 	private Point vueCourante;
 	private List<Rectangle> slots;
 	private int cote;
+	private int compteurEntrepot;
 
 	public VueJeu() {
 		this.vueCourante = new Point(12, 12);
 		this.setLayout(null);
+		this.compteurEntrepot = 0;
+	}
+
+	public void incrementCompteurEntrepot() {
+			this.compteurEntrepot++;
+			this.repaint();
+	}
+
+	public void decrementCompteurEntrepot() {
+		this.compteurEntrepot--;
+		this.repaint();
+	}
+	
+	public Polygon getTopEntrepot() {
+		return topEntrepot;
+	}
+
+	public Polygon getBotEntrepot() {
+		return botEntrepot;
 	}
 
 	public List<Rectangle> initSlots() {
 		this.slots = new ArrayList<Rectangle>();
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 7; i++) {
 			this.slots.add(new Rectangle(this.getWidth() - this.padding - 5,
 					this.padding * i + this.padding + 20 * i + 2, this.padding, this.padding));
 		}
@@ -205,6 +226,14 @@ public class VueJeu extends JPanel implements Observer {
 					new int[] { this.padding + this.padding / 4 + cote, this.padding + this.padding / 4 * 3 + cote,
 							this.padding + this.padding / 4 + cote },
 					new int[] { this.padding, this.padding + cote / 2, this.padding + cote }, 3);
+			this.topEntrepot = new Polygon(
+					new int[] { this.getWidth() - this.padding - 5,
+							this.getWidth() - this.padding - 5 + this.padding / 2, this.getWidth() - 5 },
+					new int[] { this.padding - 2, this.padding - 20, this.padding - 2 }, 3);
+			this.botEntrepot = new Polygon(
+					new int[] { this.getWidth() - this.padding - 5,
+							this.getWidth() - this.padding - 5 + this.padding / 2, this.getWidth() - 5 },
+					new int[] { this.padding + cote + 2, this.padding + cote + 20, this.padding + cote + 2 }, 3);
 			g2.fillPolygon(top);
 			g2.fillPolygon(left);
 			g2.fillPolygon(bot);
@@ -212,10 +241,38 @@ public class VueJeu extends JPanel implements Observer {
 
 			// Dessin de la case séléctionnée
 			BufferedImage icon, zombie;
+			// Ville
 			if (this.vueCourante.x == 12 && this.vueCourante.y == 12) {
 				try {
 					icon = ImageIO.read(new File(this.map[vueCourante.x][vueCourante.y].getPath()));
 					g.drawImage(icon, this.padding * 2 + cote, this.padding, cote, cote, this);
+					g2.setColor(new Color(102, 51, 0));
+					g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5, this.padding, this.padding,
+							cote));
+					g2.setColor(Color.green);
+
+					g2.fillPolygon(this.topEntrepot);
+					g2.fillPolygon(this.botEntrepot);
+
+					List<Objet> loot = Ville.getVille().getLoot();
+					for (int i = this.compteurEntrepot; i < loot.size(); i++) {
+						Objet o = loot.get(i);
+						if (i < loot.size()) {
+							try {
+								icon = o.getSpritePath();
+								g.drawImage(icon, this.getWidth() - this.padding - 5,
+										this.padding * (i - this.compteurEntrepot) + this.padding + 5 * (i-this.compteurEntrepot)  + 2, this.padding - 5, this.padding - 5,
+										this);
+								g.setColor(Color.white);
+								if (o.getQuantite() > 1) {
+									g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - this.padding - 5,
+											this.padding * (i-this.compteurEntrepot) + this.padding + 5 * (i-this.compteurEntrepot) + 10);
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -245,12 +302,12 @@ public class VueJeu extends JPanel implements Observer {
 						try {
 							icon = o.getSpritePath();
 							g.drawImage(icon, this.getWidth() - this.padding - 5,
-									this.padding * i + this.padding + 20 * i + 2, this.padding - 5, this.padding - 5,
+									this.padding * i + this.padding + 5 * i + 2, this.padding - 5, this.padding - 5,
 									this);
 							g.setColor(Color.white);
 							if (o.getQuantite() > 1) {
 								g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - this.padding - 5,
-										this.padding * i + this.padding + 20 * i + 10);
+										this.padding * i + this.padding + 5 * i + 10);
 							}
 							i++;
 						} catch (IOException e) {
