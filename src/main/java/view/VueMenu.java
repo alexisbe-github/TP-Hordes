@@ -62,7 +62,6 @@ public class VueMenu extends JPanel implements Observer {
 		this.boutonsDehors.add(passerTour);
 
 		for (JButton b : this.boutonsDehors) {
-			b.setFont(new Font("Arial", Font.PLAIN, 8));
 			if (b.getActionListeners().length < 1) {
 				b.addActionListener(cb);
 			}
@@ -70,7 +69,6 @@ public class VueMenu extends JPanel implements Observer {
 
 		this.setLayout(new GridLayout(this.boutonsVille.size(), 1));
 		for (JButton b : this.boutonsVille) {
-			b.setFont(new Font("Arial", Font.PLAIN, 8));
 			this.add(b);
 		}
 	}
