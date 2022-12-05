@@ -70,7 +70,7 @@ public class VueJeu extends JPanel implements Observer {
 		this.slots = new ArrayList<Rectangle>();
 		for (int i = 0; i < 7; i++) {
 			this.slots.add(new Rectangle(this.getWidth() - this.padding - 5,
-					this.padding * i + this.padding + 20 * i + 2, this.padding, this.padding));
+					this.padding * i + this.padding + 5 * i + 2, this.padding, this.padding));
 		}
 		return this.slots;
 	}
