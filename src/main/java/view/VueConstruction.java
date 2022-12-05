@@ -50,8 +50,16 @@ public class VueConstruction extends JFrame {
 				contenuBouton = "Construction finie";
 			}
 			if (c.estEnConstruction() && c.getAvancement() < c.getNbPa()) {
+				int paNecess = 10;
+				if(j.getJoueurCourant().getPa() < 10 && (c.getNbPa() - c.getAvancement()) >= 10) paNecess = j.getJoueurCourant().getPa();
+				if((c.getNbPa() - c.getAvancement()) < 10) {
+					paNecess = c.getNbPa() - c.getAvancement();
+					if(j.getJoueurCourant().getPa() < paNecess) {
+						paNecess = j.getJoueurCourant().getPa();
+					}
+				}
 				contenuBouton = "Participer à la construction en donnant vos PA actuels ("
-						+ j.getJoueurCourant().getPa() + ")";
+						+ paNecess + ")";
 			}
 			if (!c.estEnConstruction()) {
 				contenuBouton = "Commencer construction de " + c.getNom();
@@ -72,10 +80,11 @@ public class VueConstruction extends JFrame {
 					this.getContentPane().removeAll();
 					this.init(j);
 				} else {
-					c.ajouterPa(j.getJoueurCourant().getPa());
-					j.getJoueurCourant().ajouterPa(-j.getJoueurCourant().getPa());
+					int res = c.ajouterPa(j.getJoueurCourant().getPa());
+					j.getJoueurCourant().ajouterPa(-res);
 					this.getContentPane().removeAll();
 					this.init(j);
+					j.updateObservers();
 				}
 			});
 			this.add(button);

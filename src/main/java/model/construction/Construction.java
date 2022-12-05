@@ -12,6 +12,10 @@ public abstract class Construction {
 		return this.avancement;
 	}
 
+	public boolean constructionFinie() {
+		return this.avancement == this.getNbPa();
+	}
+
 	public boolean estEnConstruction() {
 		return this.avancement != -1;
 	}
@@ -20,8 +24,16 @@ public abstract class Construction {
 		this.avancement = 0;
 	}
 
-	public void ajouterPa(int pa) {
-		this.avancement += pa;
+	public int ajouterPa(int pa) {
+		int retrait = 0;
+		if (this.avancement + pa > this.getNbPa()) {
+			retrait = this.getNbPa() - this.avancement;
+			this.avancement = this.getNbPa();
+		} else {
+			this.avancement += pa;
+			retrait = pa;
+		}
+		return retrait;
 	}
 
 	public abstract int getResistanceAuxZombies();

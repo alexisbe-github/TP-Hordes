@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -23,6 +24,7 @@ import main.java.model.Jeu;
 import main.java.model.Joueur;
 import main.java.model.carte.Case;
 import main.java.model.carte.Ville;
+import main.java.model.construction.Construction;
 import main.java.model.objet.Objet;
 
 public class VueJeu extends JPanel implements Observer {
@@ -325,7 +327,79 @@ public class VueJeu extends JPanel implements Observer {
 						longueurCase, largeurCase));
 			}
 		}
+		
+		
+		//Dessin des constructions de la ville
+		for(Construction c:Ville.getVille().getConstructions()) {
+			if(c.constructionFinie() && this.vueCourante.x == 12 && this.vueCourante.y == 12) {
+				BufferedImage icon;
+				try {
+					icon = ImageIO.read(new File(c.getPath()));
+					switch(c.getNom()) {
+					case "Abris anti-atomique":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*28/100), this.padding + (cote*66/100), cote*10/100, cote*5/100, this);
+						break;
+					case "Fils barbelés":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*4/100), this.padding + (cote*2/100), cote*94/100, cote*92/100, this);
+						break;
+					case "Fosses à zombies":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*6/100), this.padding + (cote*4/100), cote*89/100, cote*88/100, this);
+						break;
+					case "Mines autour de la ville":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*1/100), cote*4/100, cote*4/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*20/100), cote*4/100, cote*4/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*40/100), cote*4/100, cote*4/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*60/100), cote*4/100, cote*4/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*80/100), cote*4/100, cote*4/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*1/100), this.padding + (cote*95/100), cote*4/100, cote*4/100, this);
+						break;
+					case "Miradors avec mitrailleuses automatiques":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*7/100), this.padding + (cote*92/100), cote*8/100, cote*8/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*27/100), this.padding + (cote*92/100), cote*8/100, cote*8/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*57/100), this.padding + (cote*92/100), cote*8/100, cote*8/100, this);
+						g.drawImage(icon, this.padding * 2 + cote + (cote*87/100), this.padding + (cote*92/100), cote*8/100, cote*8/100, this);
+						break;
+					case "Mur d'enceinte":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*11/100), this.padding + (cote*9/100), cote*79/100, cote*78/100, this);
+						break;
+					case "Portes blindées":
+						g.drawImage(icon, this.padding * 2 + cote + (cote*11/100), this.padding + (cote*9/100), cote*79/100, cote*78/100, this);
+						break;
+					}
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
+			}
+		}
+
+	}
+	
+	public BufferedImage rotateImageByDegrees(BufferedImage img, double angle) {
+	    double rads = Math.toRadians(angle);
+	    double sin = Math.abs(Math.sin(rads)), cos = Math.abs(Math.cos(rads));
+	    int w = img.getWidth();
+	    int h = img.getHeight();
+	    int newWidth = (int) Math.floor(w * cos + h * sin);
+	    int newHeight = (int) Math.floor(h * cos + w * sin);
+
+	    BufferedImage rotated = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+	    Graphics2D g2d = rotated.createGraphics();
+	    AffineTransform at = new AffineTransform();
+	    at.translate((newWidth - w) / 2, (newHeight - h) / 2);
+
+	    int x = w / 2;
+	    int y = h / 2;
+
+	    at.rotate(rads, x, y);
+	    g2d.setTransform(at);
+	    g2d.drawImage(img, 0, 0, this);
+	    g2d.setColor(Color.RED);
+	    g2d.drawRect(0, 0, newWidth - 1, newHeight - 1);
+	    g2d.dispose();
+
+	    return rotated;
 	}
 
 	@Override
