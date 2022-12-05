@@ -45,15 +45,17 @@ public class VueJeu extends JPanel implements Observer {
 	}
 
 	public void incrementCompteurEntrepot() {
-			this.compteurEntrepot++;
-			this.repaint();
+		this.compteurEntrepot++;
+		this.repaint();
 	}
 
 	public void decrementCompteurEntrepot() {
-		this.compteurEntrepot--;
-		this.repaint();
+		if (this.compteurEntrepot > 0) {
+			this.compteurEntrepot--;
+			this.repaint();
+		}
 	}
-	
+
 	public Polygon getTopEntrepot() {
 		return topEntrepot;
 	}
@@ -81,8 +83,13 @@ public class VueJeu extends JPanel implements Observer {
 
 	private int getIndiceClicSlot(Point p) {
 		for (int i = 0; i < this.slots.size(); i++) {
-			if (this.slots.get(i).contains(new Point(p.x, p.y)))
-				return i;
+			if (this.slots.get(i).contains(new Point(p.x, p.y))) {
+				if (this.vueCourante.x == 12 && this.vueCourante.y == 12) {
+					return i + this.compteurEntrepot;
+				} else {
+					return i;
+				}
+			}
 		}
 		return -1;
 	}
@@ -181,37 +188,6 @@ public class VueJeu extends JPanel implements Observer {
 						this.padding + i * largeurCase));
 			}
 
-			// Dessin de la ville
-			g2.setColor(Color.red);
-			if (Ville.getVille().getPortesOuvertes()) {
-				// Mur du haut
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase,
-						longueurCase / 3, largeurCase / 10));
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + ((longueurCase / 3) * 2),
-						this.padding + 12 * largeurCase, longueurCase / 3, largeurCase / 10));
-
-				// Mur du bas
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
-						this.padding + 12 * largeurCase + largeurCase - 1, longueurCase / 3, largeurCase / 10));
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + ((longueurCase / 3) * 2),
-						this.padding + 12 * largeurCase + largeurCase - 1, longueurCase / 3, largeurCase / 10));
-
-				// Mur de gauche
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase, 2,
-						largeurCase / 3));
-				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
-						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
-
-				// Mur de droite
-				g2.fill(new Rectangle2D.Double(this.padding + 13 * longueurCase - 2,
-						this.padding + 12 * largeurCase + 1, 2, largeurCase / 3));
-				g2.fill(new Rectangle2D.Double(this.padding + 13 * longueurCase - 2,
-						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
-			} else {
-				g2.draw(new Rectangle2D.Double(this.padding + 12 * longueurCase, this.padding + 12 * largeurCase,
-						longueurCase, largeurCase));
-			}
-
 			// Dessin des flèches
 			g2.setColor(Color.YELLOW);
 			this.top = new Polygon(new int[] { this.padding, this.padding + cote / 2, this.padding + cote },
@@ -261,12 +237,14 @@ public class VueJeu extends JPanel implements Observer {
 							try {
 								icon = o.getSpritePath();
 								g.drawImage(icon, this.getWidth() - this.padding - 5,
-										this.padding * (i - this.compteurEntrepot) + this.padding + 5 * (i-this.compteurEntrepot)  + 2, this.padding - 5, this.padding - 5,
-										this);
+										this.padding * (i - this.compteurEntrepot) + this.padding
+												+ 5 * (i - this.compteurEntrepot) + 2,
+										this.padding - 5, this.padding - 5, this);
 								g.setColor(Color.white);
 								if (o.getQuantite() > 1) {
 									g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - this.padding - 5,
-											this.padding * (i-this.compteurEntrepot) + this.padding + 5 * (i-this.compteurEntrepot) + 10);
+											this.padding * (i - this.compteurEntrepot) + this.padding
+													+ 5 * (i - this.compteurEntrepot) + 10);
 								}
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -315,6 +293,36 @@ public class VueJeu extends JPanel implements Observer {
 						}
 					}
 				}
+			}
+			// Dessin de la ville
+			g2.setColor(Color.red);
+			if (Ville.getVille().getPortesOuvertes()) {
+				// Mur du haut
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase,
+						longueurCase / 3, largeurCase / 10));
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + ((longueurCase / 3) * 2),
+						this.padding + 12 * largeurCase, longueurCase / 3, largeurCase / 10));
+
+				// Mur du bas
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
+						this.padding + 12 * largeurCase + largeurCase - 1, longueurCase / 3, largeurCase / 10));
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + ((longueurCase / 3) * 2),
+						this.padding + 12 * largeurCase + largeurCase - 1, longueurCase / 3, largeurCase / 10));
+
+				// Mur de gauche
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1, this.padding + 12 * largeurCase, 2,
+						largeurCase / 3));
+				g2.fill(new Rectangle2D.Double(this.padding + 12 * longueurCase + 1,
+						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
+
+				// Mur de droite
+				g2.fill(new Rectangle2D.Double(this.padding + 13 * longueurCase - 2,
+						this.padding + 12 * largeurCase + 1, 2, largeurCase / 3));
+				g2.fill(new Rectangle2D.Double(this.padding + 13 * longueurCase - 2,
+						this.padding + 12 * largeurCase + (largeurCase / 3) * 2, 2, largeurCase / 3));
+			} else {
+				g2.draw(new Rectangle2D.Double(this.padding + 12 * longueurCase, this.padding + 12 * largeurCase,
+						longueurCase, largeurCase));
 			}
 		}
 

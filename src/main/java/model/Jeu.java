@@ -32,6 +32,10 @@ public class Jeu extends Observable {
 		this.tour = 0;
 		this.journal = new Journal();
 		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
+		this.joueurs.get(0).getInventaire().ajouter(new BoissonEnergisante(1));
 	}
 
 	public void commencerJeu() {
