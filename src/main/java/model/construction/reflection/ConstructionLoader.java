@@ -8,11 +8,17 @@ import main.java.model.construction.Construction;
 public class ConstructionLoader {
 
 	private static ConstructionLoader instance;
-	private final String NOM_PACKAGE = "src/main/java/model/construction";
+	private final String NOM_PACKAGE = "main.java.model.construction.";
+	private final String PATH = "src/main/java/model/construction";
 
 	private ConstructionLoader() {
 	}
 
+	/**
+	 * Singleton pour avoir l'instance du loader
+	 * 
+	 * @return ConstructionLoader
+	 */
 	public static ConstructionLoader getInstance() {
 		if (instance == null) {
 			instance = new ConstructionLoader();
@@ -20,15 +26,25 @@ public class ConstructionLoader {
 		return instance;
 	}
 
-	public void chargerConstructions(Set<Construction> constructions) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		File f = new File(this.NOM_PACKAGE);
+	/**
+	 * Alimente l'ensemble des constructions de la ville en chargeant par réflexion
+	 * les classes qui héritent de Construction
+	 * 
+	 * @param constructions
+	 * @throws ClassNotFoundException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
+	public void chargerConstructions(Set<Construction> constructions)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		File f = new File(this.PATH);
 		File[] files = f.listFiles();
 		for (File file : files) {
 			if (file.getName().contains(".java") && !file.getName().contains("Construction")) {
 				String nomClass = file.getName().replace(".java", "");
-				Class clazz = Class.forName("main.java.model.construction." + nomClass);
+				Class clazz = Class.forName(this.NOM_PACKAGE + nomClass);
 				Object obj = clazz.newInstance();
-				Construction c = (Construction)obj;
+				Construction c = (Construction) obj;
 				constructions.add(c);
 			}
 		}

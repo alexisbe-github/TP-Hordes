@@ -27,7 +27,7 @@ public class ControleurBoutons implements ActionListener {
 		Joueur j = this.jeu.getJoueurCourant();
 		switch (text) {
 		case "Boire au puits":
-			j.boireAuPuitDeLaVille();
+			j.boireAuPuitsDeLaVille();
 			this.jeu.updateObservers();
 			break;
 		case "Remplir une gourde":

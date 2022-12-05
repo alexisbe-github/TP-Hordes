@@ -55,26 +55,36 @@ public class Ville extends Case {
 		}
 		return instance;
 	}
-	
+
 	public Set<Construction> getConstructions() {
 		return this.constructions;
 	}
-	
+
+	/**
+	 * Compte le nombre de planches dans l'entrepôt
+	 * 
+	 * @return int
+	 */
 	public int getNbPlanches() {
 		int res = 0;
-		for(Objet o:this.loot) {
-			if(o.equals(new Planche(1))) {
-				res+= o.getQuantite();
+		for (Objet o : this.loot) {
+			if (o.equals(new Planche(1))) {
+				res += o.getQuantite();
 			}
 		}
 		return res;
 	}
-	
+
+	/**
+	 * Compte le nombre de plaques de métal dans l'entrepôt
+	 * 
+	 * @return int
+	 */
 	public int getNbPlaques() {
 		int res = 0;
-		for(Objet o:this.loot) {
-			if(o.equals(new PlaqueMetal(1))) {
-				res+= o.getQuantite();
+		for (Objet o : this.loot) {
+			if (o.equals(new PlaqueMetal(1))) {
+				res += o.getQuantite();
 			}
 		}
 		return res;

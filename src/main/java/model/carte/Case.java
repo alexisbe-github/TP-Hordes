@@ -8,7 +8,7 @@ import main.java.utilitaire.Utilitaire;
 
 public class Case {
 
-	protected Inventaire loot;
+	protected Inventaire loot; //une case contient une liste d'objet qui est un Inventaire
 	protected int nbZombie;
 	private final double PROBA_0_ZOMBIE = 0.3;
 	private boolean fouillee;
@@ -18,13 +18,21 @@ public class Case {
 	public Case() {
 		this.init();
 	}
-
+	
+	/**
+	 * Constructeur servant pour les cases inconnues des joueurs
+	 * @param a, entier sans importance servant à distinguer du constructeur sans paramètres
+	 */
 	private Case(int a) {
 		this.fouillee = false;
 		this.path = "src/main/resources/unknown.png";
 		this.loot = new ListeItems();
 	}
 
+	/**
+	 * Fabrique une case vide
+	 * @return Case
+	 */
 	public static Case initCaseVide() {
 		return new Case(0);
 	}
@@ -50,10 +58,15 @@ public class Case {
 		return fouillee == other.fouillee && Objects.equals(loot, other.loot) && nbZombie == other.nbZombie;
 	}
 
+	/**
+	 * Initialisation d'une case
+	 */
 	private void init() {
-		this.path = "src/main/resources/" + CHEMINS[Utilitaire.genererEntier(0, this.CHEMINS.length)];
+		this.path = "src/main/resources/" + CHEMINS[Utilitaire.genererEntier(0, this.CHEMINS.length)]; //Chargement du sprite
 		this.fouillee = false;
 		this.loot = new ListeItems();
+		
+		//Génération des zombies sur la case
 		int x = Utilitaire.genererEntier(1, 101);
 		if (x < PROBA_0_ZOMBIE * 100) {
 			this.nbZombie = 0;

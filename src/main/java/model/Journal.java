@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Journal extends LinkedList<String>{
 	
-	private List<String> journalVeille;
+	private List<String> journalVeille; //liste stockant les données de la veille
 	private int jourCourant;
 
 	public Journal() {
@@ -15,6 +15,9 @@ public class Journal extends LinkedList<String>{
 		this.setEntete();
 	}
 	
+	/**
+	 * Ecriture de l'entête du jour courant
+	 */
 	private void setEntete() {
 		this.add("---Résumé du jour " + this.jourCourant+"---");
 	}
@@ -23,6 +26,10 @@ public class Journal extends LinkedList<String>{
 		return this.journalVeille;
 	}
 	
+	/**
+	 * Passage du prochain jour.
+	 * On vide le journal d'hier pour mettre celui d'aujourd'hui, puis on revide celui d'aujourd'hui
+	 */
 	public void setJournal() {
 		this.journalVeille.clear();
 		this.journalVeille.addAll(this);
@@ -31,6 +38,10 @@ public class Journal extends LinkedList<String>{
 		this.setEntete();
 	}
 	
+	/**
+	 * Ajoute au journal d'aujourd'hui une information dans le journal
+	 * @param ligne, contenu à écrire
+	 */
 	public void addLigne(String ligne) {
 		this.add(ligne);
 	}

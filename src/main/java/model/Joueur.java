@@ -55,6 +55,12 @@ public class Joueur {
 		}
 	}
 
+	/**
+	 * Permet de savoir si le joueur a déjà bu sa première boisson énergisante dans
+	 * la partie
+	 * 
+	 * @return
+	 */
 	public boolean aBuBoissonEnergisante() {
 		return this.compteurBoissonEnergisante != -1;
 	}
@@ -80,7 +86,8 @@ public class Joueur {
 	}
 
 	/**
-	 * 
+	 * Si le joueur a une ration dans le sac, le joueur la mange et gagne 6 points
+	 * d'actions
 	 */
 	public void mangerRation() {
 		Ration r = new Ration(1);
@@ -93,13 +100,17 @@ public class Joueur {
 	/**
 	 * Savoir si le joueur porte au moins une gourde sur lui
 	 * 
-	 * @return
+	 * @return booléen
 	 */
 	public boolean aUneGourde() {
 		return this.sac.contains(new Gourde(1));
 	}
 
-	public void boireAuPuitDeLaVille() {
+	/**
+	 * Permet au joueur de boire de l'eau dans la ville si il n'a pas déjà bu dans
+	 * la journée et qu'il est en ville
+	 */
+	public void boireAuPuitsDeLaVille() {
 		if (!this.aBu && this.estEnVille()) {
 			this.ajouterPa(6);
 			this.aBu = true;
@@ -114,6 +125,10 @@ public class Joueur {
 		this.aBu = false;
 	}
 
+	/**
+	 * Le joueur boit de l'eau si il possède une gourde sur lui et la supprime du
+	 * sac
+	 */
 	public void boire() {
 		if (!this.aBu && this.aUneGourde()) {
 			this.ajouterPa(6);
@@ -135,6 +150,9 @@ public class Joueur {
 		return this.compteurBoissonEnergisante;
 	}
 
+	/**
+	 * Incrémente le compteur de tour sans boisson énergisante
+	 */
 	public void incrementCompteurBoissonEnergisante() {
 		this.compteurBoissonEnergisante++;
 	}
@@ -165,6 +183,12 @@ public class Joueur {
 		return this.position.y + 12;
 	}
 
+	/**
+	 * Déplacement du joueur en fonction des paramètres
+	 * 
+	 * @param dx déplacement en x
+	 * @param dy déplacement en y
+	 */
 	public void deplacerJoueur(int dx, int dy) {
 		if (this.pv > 0) {
 			this.position.x += dx;
@@ -201,14 +225,32 @@ public class Joueur {
 		}
 	}
 
+	/**
+	 * Met la carte du joueur à jour
+	 * 
+	 * @param x position en x à mettre à jour
+	 * @param y position en y à mettre à jour
+	 * @param c objet avec contenant les données mises à jour à placer dans la carte
+	 *          du joueur
+	 */
 	public void updateCarteDuJoueur(int x, int y, Case c) {
 		this.carteVersionJoueur[x][y] = c;
 	}
 
+	/**
+	 * 
+	 * @param degats
+	 */
 	public void infligerDegats(int degats) {
 		this.pv -= degats;
 	}
 
+	/**
+	 * Ajout des points d'action au joueur en vérifiant qu'il ne dépasse pas la
+	 * limite
+	 * 
+	 * @param dpa
+	 */
 	public void ajouterPa(int dpa) {
 		this.pa += dpa;
 		if (this.pa > this.PA_MAX) {

@@ -24,6 +24,11 @@ public abstract class Construction {
 		this.avancement = 0;
 	}
 
+	/**
+	 * Ajoute des pa qu'un joueur a investi dans la construction
+	 * @param pa
+	 * @return int, le surplus de pa
+	 */
 	public int ajouterPa(int pa) {
 		int retrait = 0;
 		if (this.avancement + pa > this.getNbPa()) {

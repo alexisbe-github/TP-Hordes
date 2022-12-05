@@ -14,7 +14,7 @@ import main.java.utilitaire.Utilitaire;
 public class Carte extends Observable {
 
 	private final int TAILLE = 25;
-	private Case[][] carte;
+	private Case[][] carte; //la carte est un tableau à 2 dimensions de cases
 	private List<Joueur> joueurs;
 	private final int NB_PLANCHES = 1000;
 	private final int NB_PLAQUES = 500;
