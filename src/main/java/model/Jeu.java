@@ -95,11 +95,19 @@ public class Jeu extends Observable {
 	}
 
 	private void attaque() {
-		int nbZombieAttaque = this.getJour() * 10 + Utilitaire.genererEntier(0, 11);
+		int nbZombieAttaque = this.getJour() + Utilitaire.genererEntier(0, 11);
 		int resistanceVille = 0;
 		for (Construction c : Ville.getVille().getConstructions()) {
 			if (c.constructionFinie()) {
 				resistanceVille += c.getResistanceAuxZombies();
+			}
+		}
+
+		for (Joueur j : this.joueurs) {
+			if (!j.estEnVille()) {
+				this.journal.addLigne(j.getNom() + " est mort en x:" + j.getPosX() + ",y:" + j.getPosY()
+						+ " par les zombies en dehors de la ville.");
+				this.joueurs.remove(j);
 			}
 		}
 		if (nbZombieAttaque > resistanceVille) {
