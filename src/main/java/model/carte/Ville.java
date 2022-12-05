@@ -22,8 +22,6 @@ public class Ville extends Case {
 		this.nbZombie = 0;
 		this.portesOuvertes = false;
 		this.loot = new Entrepot();
-		this.loot.add(new Planche(500));
-		this.loot.add(new PlaqueMetal(500));
 		this.path = "src/main/resources/";
 		if (this.portesOuvertes) {
 			this.path += "ville1.png";

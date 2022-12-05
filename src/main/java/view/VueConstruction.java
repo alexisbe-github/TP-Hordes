@@ -51,15 +51,15 @@ public class VueConstruction extends JFrame {
 			}
 			if (c.estEnConstruction() && c.getAvancement() < c.getNbPa()) {
 				int paNecess = 10;
-				if(j.getJoueurCourant().getPa() < 10 && (c.getNbPa() - c.getAvancement()) >= 10) paNecess = j.getJoueurCourant().getPa();
-				if((c.getNbPa() - c.getAvancement()) < 10) {
+				if (j.getJoueurCourant().getPa() < 10 && (c.getNbPa() - c.getAvancement()) >= 10)
+					paNecess = j.getJoueurCourant().getPa();
+				if ((c.getNbPa() - c.getAvancement()) < 10) {
 					paNecess = c.getNbPa() - c.getAvancement();
-					if(j.getJoueurCourant().getPa() < paNecess) {
+					if (j.getJoueurCourant().getPa() < paNecess) {
 						paNecess = j.getJoueurCourant().getPa();
 					}
 				}
-				contenuBouton = "Participer à la construction en donnant vos PA actuels ("
-						+ paNecess + ")";
+				contenuBouton = "Participer à la construction en donnant vos PA actuels (" + paNecess + ")";
 			}
 			if (!c.estEnConstruction()) {
 				contenuBouton = "Commencer construction de " + c.getNom();
@@ -76,12 +76,16 @@ public class VueConstruction extends JFrame {
 					Entrepot ent = (Entrepot) v.getLoot();
 					ent.retirerEnQte(new Planche(c.getNbPlanches()));
 					ent.retirerEnQte(new PlaqueMetal(c.getNbPlaques()));
+					j.getJournal()
+							.addLigne(j.getJoueurCourant().getNom() + " a commencé la construction " + c.getNom());
 					j.updateObservers();
 					this.getContentPane().removeAll();
 					this.init(j);
 				} else {
 					int res = c.ajouterPa(j.getJoueurCourant().getPa());
 					j.getJoueurCourant().ajouterPa(-res);
+					j.getJournal().addLigne(j.getJoueurCourant().getNom() + " a utilisé " + res
+							+ " PA sur la construction " + c.getNom());
 					this.getContentPane().removeAll();
 					this.init(j);
 					j.updateObservers();

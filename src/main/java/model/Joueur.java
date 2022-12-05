@@ -54,7 +54,7 @@ public class Joueur {
 			}
 		}
 	}
-	
+
 	public boolean aBuBoissonEnergisante() {
 		return this.compteurBoissonEnergisante != -1;
 	}
@@ -78,13 +78,13 @@ public class Joueur {
 	public Sac getInventaire() {
 		return this.sac;
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void mangerRation() {
 		Ration r = new Ration(1);
-		if(this.sac.contains(r)) {
+		if (this.sac.contains(r)) {
 			this.sac.remove(r);
 			this.ajouterPa(6);
 		}
@@ -98,9 +98,9 @@ public class Joueur {
 	public boolean aUneGourde() {
 		return this.sac.contains(new Gourde(1));
 	}
-	
+
 	public void boireAuPuitDeLaVille() {
-		if(!this.aBu && this.estEnVille()) {
+		if (!this.aBu && this.estEnVille()) {
 			this.ajouterPa(6);
 			this.aBu = true;
 		}
@@ -109,11 +109,11 @@ public class Joueur {
 	public boolean aBu() {
 		return this.aBu;
 	}
-	
+
 	public void resetABu() {
 		this.aBu = false;
 	}
-	
+
 	public void boire() {
 		if (!this.aBu && this.aUneGourde()) {
 			this.ajouterPa(6);
@@ -130,15 +130,15 @@ public class Joueur {
 		this.ajouterPa(6);
 		this.sac.remove(new BoissonEnergisante(1));
 	}
-	
+
 	public int getCompteurBoissonEnergisante() {
 		return this.compteurBoissonEnergisante;
 	}
-	
+
 	public void incrementCompteurBoissonEnergisante() {
 		this.compteurBoissonEnergisante++;
 	}
-	
+
 	/**
 	 * Méthode décremntant le nombre de point d'action
 	 */
@@ -166,9 +166,11 @@ public class Joueur {
 	}
 
 	public void deplacerJoueur(int dx, int dy) {
-		this.position.x += dx;
-		this.position.y += dy;
-		this.pa--;
+		if (this.pv > 0) {
+			this.position.x += dx;
+			this.position.y += dy;
+			this.pa--;
+		}
 	}
 
 	/**

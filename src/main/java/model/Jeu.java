@@ -6,11 +6,7 @@ import java.util.Observable;
 import main.java.model.carte.Carte;
 import main.java.model.carte.Case;
 import main.java.model.carte.Ville;
-import main.java.model.objet.BoissonEnergisante;
-import main.java.model.objet.Gourde;
-import main.java.model.objet.Planche;
-import main.java.model.objet.PlaqueMetal;
-import main.java.model.objet.Ration;
+import main.java.model.construction.Construction;
 import main.java.utilitaire.Utilitaire;
 
 public class Jeu extends Observable {
@@ -43,7 +39,7 @@ public class Jeu extends Observable {
 	public Carte getCarte() {
 		return this.carte;
 	}
-	
+
 	public Journal getJournal() {
 		return this.journal;
 	}
@@ -71,14 +67,15 @@ public class Jeu extends Observable {
 		}
 		this.updateObservers();
 	}
-	
+
 	private void prochainJour() {
 		this.journal.setJournal();
-		for(Joueur j: this.joueurs) {
-			if(j.aBu()) {
+		for (Joueur j : this.joueurs) {
+			if (j.aBu()) {
 				j.resetABu();
 			}
 		}
+		this.attaque();
 	}
 
 	private void prochainTour() {
@@ -91,9 +88,29 @@ public class Jeu extends Observable {
 					j.infligerDegats(5);
 				}
 			}
-			if(j.getPv() <= 0) {
+			if (j.getPv() <= 0) {
 				this.joueurs.remove(j);
 			}
+		}
+	}
+
+	private void attaque() {
+		int nbZombieAttaque = this.getJour() + Utilitaire.genererEntier(0, 11);
+		int resistanceVille = 0;
+		for (Construction c : Ville.getVille().getConstructions()) {
+			if (c.constructionFinie()) {
+				resistanceVille += c.getResistanceAuxZombies();
+			}
+		}
+		if (nbZombieAttaque > resistanceVille) {
+			for (int i = 0; i < this.joueurs.size() / 2; i++) {
+				int index = Utilitaire.genererEntier(0, this.joueurs.size());
+				this.journal.addLigne(
+						this.joueurs.get(index).getNom() + " est mort cette nuit dans la ville par les zombies.");
+				this.joueurs.remove(index);
+			}
+		} else {
+			this.journal.addLigne("Personne n'est mort cette nuit.");
 		}
 	}
 
@@ -205,13 +222,13 @@ public class Jeu extends Observable {
 		}
 	}
 
-	public void majCarte(Joueur joueur,Case c, int x, int y) {
+	public void majCarte(Joueur joueur, Case c, int x, int y) {
 		if (this.getJoueurCourant().getPa() > 0) {
 			for (Joueur j : this.joueurs) {
 				j.updateCarteDuJoueur(x, y, c);
 			}
 			this.getJoueurCourant().ajouterPa(-1);
-			String journalContent = joueur.getNom() + " a mis la carte à jour en x:" + (x-12) + " y:" + (y-12);
+			String journalContent = joueur.getNom() + " a mis la carte à jour en x:" + (x - 12) + " y:" + (y - 12);
 			this.journal.addLigne(journalContent);
 		}
 		this.updateObservers();
