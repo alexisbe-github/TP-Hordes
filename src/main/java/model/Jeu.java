@@ -95,7 +95,7 @@ public class Jeu extends Observable {
 	}
 
 	private void attaque() {
-		int nbZombieAttaque = this.getJour() + Utilitaire.genererEntier(0, 11);
+		int nbZombieAttaque = this.getJour() * 10 + Utilitaire.genererEntier(0, 11);
 		int resistanceVille = 0;
 		for (Construction c : Ville.getVille().getConstructions()) {
 			if (c.constructionFinie()) {
