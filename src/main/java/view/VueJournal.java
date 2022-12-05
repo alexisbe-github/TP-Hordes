@@ -11,6 +11,7 @@ import main.java.model.Journal;
 public class VueJournal extends JFrame{
 
 	public VueJournal(Journal journal) {
+		this.setTitle("Journal du jour "+(journal.getJourCourant()-1));
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setBounds(100,100,tailleEcran.width/6, tailleEcran.height/2);
 		JTextArea textArea = new JTextArea();

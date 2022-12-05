@@ -7,7 +7,9 @@ import javax.swing.JButton;
 
 import main.java.model.Jeu;
 import main.java.model.Joueur;
+import main.java.model.carte.Ville;
 import main.java.model.objet.Gourde;
+import main.java.view.VueConstruction;
 import main.java.view.VueJournal;
 
 public class ControleurBoutons implements ActionListener {
@@ -33,7 +35,7 @@ public class ControleurBoutons implements ActionListener {
 			this.jeu.updateObservers();
 			break;
 		case "Construire une défense":
-
+			VueConstruction vc = new VueConstruction(jeu);
 			break;
 		case "Passer le tour du joueur":
 			this.jeu.prochainJoueur();

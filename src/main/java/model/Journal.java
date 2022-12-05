@@ -34,4 +34,8 @@ public class Journal extends LinkedList<String>{
 	public void addLigne(String ligne) {
 		this.add(ligne);
 	}
+	
+	public int getJourCourant() {
+		return this.jourCourant;
+	}
 }
