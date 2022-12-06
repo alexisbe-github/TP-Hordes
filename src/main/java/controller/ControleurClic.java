@@ -32,8 +32,8 @@ public class ControleurClic implements MouseListener {
 			int y = (int) ((e.getY() - vj.getPadding()) / longueurCellule);
 			this.vj.setVueCourant(x, y);
 		} else {
-			
-			//Clique sur les flèches directionnelles sur la carte
+
+			// Clique sur les flèches directionnelles sur la carte
 			if (vj.getTop().contains(p)) {
 				this.vj.getJeu().deplacerHaut(this.vj.getJoueurCourant());
 			}
@@ -46,19 +46,19 @@ public class ControleurClic implements MouseListener {
 			if (vj.getRight().contains(p)) {
 				this.vj.getJeu().deplacerDroite(this.vj.getJoueurCourant());
 			}
-			
-			if(vj.getTopEntrepot().contains(p)) {
+
+			if (vj.getTopEntrepot().contains(p)) {
 				this.vj.decrementCompteurEntrepot();
 			}
-			if(vj.getBotEntrepot().contains(p)) {
+			if (vj.getBotEntrepot().contains(p)) {
 				this.vj.incrementCompteurEntrepot();
 			}
-			
-			//Si on clique sur un item par terre sur la case
+
+			// Si on clique sur un item par terre sur la case
 			if (vj.isOnSlot(p)) {
 				Objet o = vj.getClicObjet(p);
 				VueClicItem vci = new VueClicItem(o, this.vj.getJoueurCourant().getInventaire(),
-						this.vj.getCaseCourante().getLoot(),this.vj.getJeu(), false);
+						this.vj.getCaseCourante().getLoot(), this.vj.getJeu(), false);
 				vci.show(vj, p.x, p.y);
 			}
 		}

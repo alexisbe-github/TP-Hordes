@@ -79,7 +79,7 @@ public class Jeu extends Observable {
 		}
 		this.updateObservers();
 	}
-	
+
 	/**
 	 * Lorsqu'on passe un jour on dit que tous les joueurs n'ont pas bu, on lance
 	 * l'attaque des zombies et on tourne la page dans le journal
@@ -147,7 +147,7 @@ public class Jeu extends Observable {
 		// Si les défenses sont inopérantes ou les portes de la ville ouvertes on tue
 		// 50% des joueurs en ville
 		if (nbZombieAttaque > resistanceVille || Ville.getVille().getPortesOuvertes()) {
-			int taille = this.joueurs.size()/2;
+			int taille = this.joueurs.size() / 2;
 			for (int i = 0; i < taille; i++) {
 				int index = Utilitaire.genererEntier(0, this.joueurs.size());
 				this.journal.addLigne(
@@ -184,6 +184,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Vérifie si le joueur peut se déplacer sur la case de gauche
+	 * 
 	 * @param j joueur en question
 	 * @return booléen
 	 */
@@ -208,6 +209,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Vérifie si le joueur peut se déplacer sur la case du haut
+	 * 
 	 * @param j joueur en question
 	 * @return booléen
 	 */
@@ -232,6 +234,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Vérifie si le joueur peut se déplacer sur la case de droite
+	 * 
 	 * @param j joueur en question
 	 * @return booléen
 	 */
@@ -256,6 +259,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Vérifie si le joueur peut se déplacer sur la case du bas
+	 * 
 	 * @param j joueur en question
 	 * @return booléen
 	 */
@@ -269,6 +273,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Le joueur fouille une case
+	 * 
 	 * @param c la Case en question
 	 * @param j le joueur qui la fouille
 	 */
@@ -282,6 +287,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Un zombie meurt sur la Case c
+	 * 
 	 * @param c
 	 */
 	public void tuerZombie(Case c) {
@@ -300,6 +306,7 @@ public class Jeu extends Observable {
 
 	/**
 	 * Met la case à jour pour tous les autres joueurs
+	 * 
 	 * @param joueur
 	 * @param c
 	 * @param x
@@ -307,8 +314,8 @@ public class Jeu extends Observable {
 	 */
 	public void majCarte(Joueur joueur, Case c, int x, int y) {
 		if (this.getJoueurCourant().getPa() > 0) {
-			
-			//Pour chaque joueur on met à jour sa version de la carte
+
+			// Pour chaque joueur on met à jour sa version de la carte
 			for (Joueur j : this.joueurs) {
 				j.updateCarteDuJoueur(x, y, c);
 			}

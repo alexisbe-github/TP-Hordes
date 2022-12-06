@@ -26,6 +26,7 @@ public abstract class Construction {
 
 	/**
 	 * Ajoute des pa qu'un joueur a investi dans la construction
+	 * 
 	 * @param pa
 	 * @return int, le surplus de pa
 	 */

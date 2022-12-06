@@ -8,10 +8,10 @@ import main.java.model.objet.Objet;
 import main.java.view.VueClicItem;
 import main.java.view.VueInventaire;
 
-public class ControleurInventaire implements MouseListener{
+public class ControleurInventaire implements MouseListener {
 
 	private VueInventaire vi;
-	
+
 	public ControleurInventaire(VueInventaire vi) {
 		this.vi = vi;
 	}
@@ -19,35 +19,36 @@ public class ControleurInventaire implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Point p = new Point(e.getX(), e.getY());
-		if(this.vi.isOnSlot(p)) {
+		if (this.vi.isOnSlot(p)) {
 			Objet o = vi.getClicObjet(p);
-			VueClicItem vci = new VueClicItem(o, vi.getJoueurCourant().getInventaire(), vi.getJeu().getCaseDuJoueur(vi.getJoueurCourant()).getLoot(),vi.getJeu(),true);
+			VueClicItem vci = new VueClicItem(o, vi.getJoueurCourant().getInventaire(),
+					vi.getJeu().getCaseDuJoueur(vi.getJoueurCourant()).getLoot(), vi.getJeu(), true);
 			vci.show(vi, p.x, p.y);
 		}
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

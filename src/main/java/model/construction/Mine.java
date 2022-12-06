@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class Mine extends Construction{
-	
+public class Mine extends Construction {
+
 	public Mine() {
 		super();
 	}

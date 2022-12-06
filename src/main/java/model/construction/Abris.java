@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class Abris extends Construction{
-	
+public class Abris extends Construction {
+
 	public Abris() {
 		super();
 	}

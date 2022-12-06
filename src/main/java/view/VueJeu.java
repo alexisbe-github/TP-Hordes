@@ -256,7 +256,8 @@ public class VueJeu extends JPanel implements Observer {
 											this.padding * (i - this.compteurEntrepot) + this.padding
 													+ 5 * (i - this.compteurEntrepot) + 10);
 								}
-								if (i == this.hover && (this.getCaseCourante().estFouillee() || this.getCaseCourante() instanceof Ville)) {
+								if (i == this.hover && (this.getCaseCourante().estFouillee()
+										|| this.getCaseCourante() instanceof Ville)) {
 									g2.setColor(new Color(200, 200, 200, 150));
 									g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5,
 											this.padding * (i - this.compteurEntrepot) + this.padding
@@ -306,9 +307,8 @@ public class VueJeu extends JPanel implements Observer {
 							if (i == this.hover && this.getCaseCourante().estFouillee()) {
 								g2.setColor(new Color(200, 200, 200, 150));
 								g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5,
-										this.padding * (i ) + this.padding
-												+ 5 * (i) + 2,
-										this.padding, this.padding - 5));
+										this.padding * (i) + this.padding + 5 * (i) + 2, this.padding,
+										this.padding - 5));
 							}
 							i++;
 						} catch (IOException e) {

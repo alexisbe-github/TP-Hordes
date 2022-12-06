@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class MitrailleuseAutomatique extends Construction{
-	
+public class MitrailleuseAutomatique extends Construction {
+
 	public MitrailleuseAutomatique() {
 		super();
 	}

@@ -49,10 +49,10 @@ public class ControleurBoutons implements ActionListener {
 			this.jeu.updateObservers();
 			break;
 		case "Fouiller la zone (1PA)":
-			this.jeu.fouiller(this.jeu.getCaseDuJoueur(j),j);
+			this.jeu.fouiller(this.jeu.getCaseDuJoueur(j), j);
 			break;
 		case "M‡J case (1PA)":
-			this.jeu.majCarte(j,this.jeu.getCaseDuJoueur(j), j.getPosX(), j.getPosY());
+			this.jeu.majCarte(j, this.jeu.getCaseDuJoueur(j), j.getPosX(), j.getPosY());
 			break;
 		case "Tuer un zombie (1PA)":
 			this.jeu.tuerZombie(this.jeu.getCaseDuJoueur(j));

@@ -62,7 +62,7 @@ public abstract class Objet {
 	public void ajouterQte(int qte) {
 		this.quantite += qte;
 	}
-	
+
 	public void setQte(int qte) {
 		this.quantite = qte;
 	}

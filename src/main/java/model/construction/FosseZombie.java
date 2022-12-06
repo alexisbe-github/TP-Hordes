@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class FosseZombie extends Construction{
-	
+public class FosseZombie extends Construction {
+
 	public FosseZombie() {
 		super();
 	}

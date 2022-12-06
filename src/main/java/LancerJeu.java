@@ -13,11 +13,17 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import main.java.model.Joueur;
 
+/**
+ * 
+ * @author Alexis BEER, Baptiste BILLARD, Emile ALEXANDRE
+ *
+ */
 public class LancerJeu {
 
 	private static JFrame fenetre;
@@ -46,15 +52,28 @@ public class LancerJeu {
 				}
 			}
 		});
-		confirmer.addActionListener(new ActionListener() {
 
+		// Listener sur la confirmation du nombre de joueur
+		confirmer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int nbJoueurs = Integer.parseInt(jtf.getText());
-				pane.removeAll();
-				pane.revalidate();
-				pane.repaint();
-				inputPlayers(nbJoueurs, 1);
+				try {
+					int nbJoueurs = Integer.parseInt(jtf.getText());
+					if (nbJoueurs < 2 || nbJoueurs > 20) {
+						JOptionPane.showMessageDialog(new JFrame(),
+								"Veuillez rentrez un nombre de joueur entre 2 et 20", "Erreur",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						pane.removeAll();
+						pane.revalidate();
+						pane.repaint();
+						inputPlayers(nbJoueurs, 1);
+					}
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(new JFrame(),
+							"Veuillez rentrez un nombre de joueur valide! ' " + jtf.getText() + " ' n'est pas valide!",
+							"Erreur", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 
 		});
@@ -73,6 +92,12 @@ public class LancerJeu {
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * Appel récursif de l'entrée utilisateur des noms des joueurs
+	 * 
+	 * @param nbJoueurs
+	 * @param compteur
+	 */
 	private static void inputPlayers(int nbJoueurs, int compteur) {
 		JLabel labelInput = new JLabel("Rentrez le nom du joueur " + compteur);
 		JTextField input = new JTextField();

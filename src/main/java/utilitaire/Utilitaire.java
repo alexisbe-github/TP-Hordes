@@ -5,7 +5,7 @@ import java.util.Random;
 public class Utilitaire {
 
 	/**
-	 * Permet de générer un entier entre a et b
+	 * Permet de générer un entier entre a et b strictement inférieur
 	 * 
 	 * @param a
 	 * @param b

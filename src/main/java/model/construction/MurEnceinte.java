@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class MurEnceinte extends Construction{
-	
+public class MurEnceinte extends Construction {
+
 	public MurEnceinte() {
 		super();
 	}
@@ -35,7 +35,5 @@ public class MurEnceinte extends Construction{
 	public String getNom() {
 		return "Mur d'enceinte";
 	}
-
-
 
 }

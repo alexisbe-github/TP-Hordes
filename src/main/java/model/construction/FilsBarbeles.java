@@ -1,7 +1,7 @@
 package main.java.model.construction;
 
-public class FilsBarbeles extends Construction{
-	
+public class FilsBarbeles extends Construction {
+
 	public FilsBarbeles() {
 		super();
 	}
