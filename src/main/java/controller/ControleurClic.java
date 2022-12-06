@@ -55,7 +55,7 @@ public class ControleurClic implements MouseListener {
 			}
 			
 			//Si on clique sur un item par terre sur la case
-			if (vj.clicOnSlot(p)) {
+			if (vj.isOnSlot(p)) {
 				Objet o = vj.getClicObjet(p);
 				VueClicItem vci = new VueClicItem(o, this.vj.getJoueurCourant().getInventaire(),
 						this.vj.getCaseCourante().getLoot(),this.vj.getJeu(), false);

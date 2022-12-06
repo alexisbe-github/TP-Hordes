@@ -2,8 +2,10 @@ package main.java.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import main.java.model.Jeu;
 import main.java.model.Joueur;
 import main.java.model.carte.Case;
+import main.java.model.carte.Ville;
 import main.java.model.objet.Objet;
 import main.java.model.stockage.Sac;
 
@@ -26,15 +29,17 @@ public class VueInventaire extends JPanel implements Observer {
 	private List<Rectangle> slots;
 	private int cote;
 	private Jeu j;
-	
+	private int hover;
+
 	public VueInventaire() {
 		this.padding = 0;
+		this.hover = -1;
 	}
-	
+
 	public Jeu getJeu() {
 		return this.j;
 	}
-	
+
 	public Joueur getJoueurCourant() {
 		return this.joueurCourant;
 	}
@@ -46,29 +51,35 @@ public class VueInventaire extends JPanel implements Observer {
 		}
 		return this.slots;
 	}
-	
-	public boolean clicOnSlot(Point p) {
+
+	public boolean isOnSlot(Point p) {
 		Sac sac = this.joueurCourant.getInventaire();
-		int indice = this.getIndiceClicSlot(p);
+		int indice = this.getIndiceSlot(p);
 		return indice != -1 && indice < sac.size();
 	}
-	
-	private int getIndiceClicSlot(Point p) {
-		for(int i=0;i<this.slots.size();i++) {
-			if(this.slots.get(i).contains(new Point(p.x,p.y))) return i;
+
+	public void setHover(int indice) {
+		this.hover = indice;
+	}
+
+	public int getIndiceSlot(Point p) {
+		for (int i = 0; i < this.slots.size(); i++) {
+			if (this.slots.get(i).contains(new Point(p.x, p.y)))
+				return i;
 		}
 		return -1;
 	}
-	
+
 	public Objet getClicObjet(Point p) {
 		Sac sac = this.joueurCourant.getInventaire();
-		return sac.get(this.getIndiceClicSlot(p));
+		return sac.get(this.getIndiceSlot(p));
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(new Color(102, 51, 0));
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		Graphics2D g2 = (Graphics2D) g;
 
 		this.padding = this.getWidth() / 30;
 		this.cote = this.getWidth() / 20;
@@ -94,6 +105,10 @@ public class VueInventaire extends JPanel implements Observer {
 					if (o.getQuantite() > 1) {
 						g.drawString(String.valueOf(o.getQuantite()),
 								this.padding + cote + cote * i + (this.padding * i) - 20, cote);
+					}
+					if (i == this.hover) {
+						g2.setColor(new Color(200, 200, 200, 100));
+						g2.fill(new Rectangle2D.Double(this.padding + cote * i + (this.padding * i), 5, cote, cote));
 					}
 					i++;
 				} catch (IOException e) {

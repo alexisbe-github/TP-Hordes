@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import main.java.controller.ControleurBoutons;
 import main.java.controller.ControleurClic;
 import main.java.controller.ControleurInventaire;
+import main.java.controller.ControleurMouvementSouris;
+import main.java.controller.ControleurMouvementSourisInventaire;
 import main.java.model.Jeu;
 import main.java.model.Joueur;
 import main.java.view.VueInfoJeu;
@@ -46,15 +48,10 @@ public class SetupJeu {
 		VueMenu panelCenterRight = new VueMenu(new ControleurBoutons(j));
 		VueJeu panelCenterLeft = new VueJeu();
 		panelCenter.setLayout(new BorderLayout());
-		//panelCenter.setBackground(Color.black);
-		//panelBot.setBackground(Color.red);
 		panelTop.setPreferredSize(new Dimension(fenetre.getWidth(),fenetre.getHeight()/10));
 		panelCenter.setPreferredSize(new Dimension(fenetre.getWidth(),fenetre.getHeight()/10*8));
 		panelBot.setPreferredSize(new Dimension(fenetre.getWidth(),fenetre.getHeight()/10));
-		//panelCenterLeft.setBackground(Color.pink);
 
-		//panelCenterLeft.setPreferredSize(new Dimension(panelCenter.getWidth()/3,panelCenter.getHeight()));
-		//panelCenterRight.setPreferredSize(new Dimension(panelCenter.getWidth()/3*2,panelCenter.getHeight()));
 
 		// Ajout des panel centraux
 		panelCenter.add(panelCenterLeft,BorderLayout.CENTER);
@@ -68,8 +65,14 @@ public class SetupJeu {
 		//Création des controleurs
 		ControleurClic cc = new ControleurClic(panelCenterLeft);
 		ControleurInventaire ci = new ControleurInventaire(panelBot);
+		ControleurMouvementSouris cms = new ControleurMouvementSouris(panelCenterLeft);
+		ControleurMouvementSourisInventaire cmsi = new ControleurMouvementSourisInventaire(panelBot);
+		
+		//Ajout des listeners aux vues
 		panelCenterLeft.addMouseListener(cc);
+		panelCenterLeft.addMouseMotionListener(cms);
 		panelBot.addMouseListener(ci);
+		panelBot.addMouseMotionListener(cmsi);
 		
 		//Ajout des observers
 		j.addObserver(panelTop);

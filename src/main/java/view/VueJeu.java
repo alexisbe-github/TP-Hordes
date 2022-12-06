@@ -1,12 +1,12 @@
 package main.java.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -34,6 +34,7 @@ public class VueJeu extends JPanel implements Observer {
 	private Joueur joueurCourant;
 	private Jeu j;
 	private Polygon top, left, right, bot, topEntrepot, botEntrepot;
+	private int hover;
 
 	private Point vueCourante;
 	private List<Rectangle> slots;
@@ -44,6 +45,7 @@ public class VueJeu extends JPanel implements Observer {
 		this.vueCourante = new Point(12, 12);
 		this.setLayout(null);
 		this.compteurEntrepot = 0;
+		this.hover = -1;
 	}
 
 	public void incrementCompteurEntrepot() {
@@ -75,15 +77,19 @@ public class VueJeu extends JPanel implements Observer {
 		return this.slots;
 	}
 
-	public boolean clicOnSlot(Point p) {
+	public boolean isOnSlot(Point p) {
 		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()]
 				.getLoot();
-		int indice = this.getIndiceClicSlot(p);
+		int indice = this.getIndiceSlot(p);
 		return indice != -1 && indice < loot.size() && this.joueurCourant.getPosX() == this.vueCourante.x
 				&& this.joueurCourant.getPosY() == this.vueCourante.y;
 	}
 
-	private int getIndiceClicSlot(Point p) {
+	public void setHover(int indice) {
+		this.hover = indice;
+	}
+
+	public int getIndiceSlot(Point p) {
 		for (int i = 0; i < this.slots.size(); i++) {
 			if (this.slots.get(i).contains(new Point(p.x, p.y))) {
 				if (this.vueCourante.x == 12 && this.vueCourante.y == 12) {
@@ -103,7 +109,7 @@ public class VueJeu extends JPanel implements Observer {
 	public Objet getClicObjet(Point p) {
 		List<Objet> loot = this.j.getCarte().getCarte()[this.joueurCourant.getPosX()][this.joueurCourant.getPosY()]
 				.getLoot();
-		return loot.get(this.getIndiceClicSlot(p));
+		return loot.get(this.getIndiceSlot(p));
 	}
 
 	public Joueur getJoueurCourant() {
@@ -250,13 +256,19 @@ public class VueJeu extends JPanel implements Observer {
 											this.padding * (i - this.compteurEntrepot) + this.padding
 													+ 5 * (i - this.compteurEntrepot) + 10);
 								}
+								if (i == this.hover && (this.getCaseCourante().estFouillee() || this.getCaseCourante() instanceof Ville)) {
+									g2.setColor(new Color(200, 200, 200, 150));
+									g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5,
+											this.padding * (i - this.compteurEntrepot) + this.padding
+													+ 5 * (i - this.compteurEntrepot) + 2,
+											this.padding, this.padding - 5));
+								}
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
 					}
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
@@ -290,6 +302,13 @@ public class VueJeu extends JPanel implements Observer {
 							if (o.getQuantite() > 1) {
 								g.drawString(String.valueOf(o.getQuantite()), this.getWidth() - this.padding - 5,
 										this.padding * i + this.padding + 5 * i + 10);
+							}
+							if (i == this.hover && this.getCaseCourante().estFouillee()) {
+								g2.setColor(new Color(200, 200, 200, 150));
+								g2.fill(new Rectangle2D.Double(this.getWidth() - this.padding - 5,
+										this.padding * (i ) + this.padding
+												+ 5 * (i) + 2,
+										this.padding, this.padding - 5));
 							}
 							i++;
 						} catch (IOException e) {
@@ -390,6 +409,19 @@ public class VueJeu extends JPanel implements Observer {
 			}
 		}
 
+		// Dessin de la victoire
+		if (this.j.getJoueurs().size() == 1) {
+			g.setColor(Color.BLACK);
+			g.fillRect(0, (this.getHeight() / 10) * 3, this.getWidth(), (this.getHeight() / 10) * 5);
+			g.setColor(Color.red);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 45));
+			g.drawString("FIN DU JEU", this.getWidth() / 4, (this.getHeight() / 10) * 5);
+			g.setColor(Color.WHITE);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+			g.drawString(j.getJoueurCourant().getNom() + " est le dernier survivant et vainqueur!", this.getWidth() / 2,
+					(this.getHeight() / 10) * 7);
+			g.draw3DRect(0, (this.getHeight() / 10) * 3, this.getWidth(), (this.getHeight() / 10) * 5, true);
+		}
 	}
 
 	@Override

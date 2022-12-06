@@ -25,7 +25,7 @@ public class ControleurInventaire implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Point p = new Point(e.getX(), e.getY());
-		if(this.vi.clicOnSlot(p)) {
+		if(this.vi.isOnSlot(p)) {
 			Objet o = vi.getClicObjet(p);
 			VueClicItem vci = new VueClicItem(o, vi.getJoueurCourant().getInventaire(), vi.getJeu().getCaseDuJoueur(vi.getJoueurCourant()).getLoot(),vi.getJeu(),true);
 			vci.show(vi, p.x, p.y);

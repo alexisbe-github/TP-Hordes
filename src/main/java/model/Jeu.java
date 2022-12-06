@@ -79,7 +79,7 @@ public class Jeu extends Observable {
 		}
 		this.updateObservers();
 	}
-
+	
 	/**
 	 * Lorsqu'on passe un jour on dit que tous les joueurs n'ont pas bu, on lance
 	 * l'attaque des zombies et on tourne la page dans le journal
@@ -147,7 +147,8 @@ public class Jeu extends Observable {
 		// Si les défenses sont inopérantes ou les portes de la ville ouvertes on tue
 		// 50% des joueurs en ville
 		if (nbZombieAttaque > resistanceVille || Ville.getVille().getPortesOuvertes()) {
-			for (int i = 0; i < this.joueurs.size() / 2; i++) {
+			int taille = this.joueurs.size()/2;
+			for (int i = 0; i < taille; i++) {
 				int index = Utilitaire.genererEntier(0, this.joueurs.size());
 				this.journal.addLigne(
 						this.joueurs.get(index).getNom() + " est mort cette nuit dans la ville par les zombies.");

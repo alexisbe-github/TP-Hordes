@@ -89,6 +89,10 @@ public class Ville extends Case {
 		}
 		return res;
 	}
+	
+	public Entrepot getEntrepot() {
+		return (Entrepot)this.loot;
+	}
 
 	public boolean getPortesOuvertes() {
 		return this.portesOuvertes;
