@@ -75,15 +75,15 @@ public class VueClicItem extends JPopupMenu {
 			JMenuItem recuperer = new JMenuItem("Mettre dans le sac");
 			recuperer.addActionListener(e -> {
 				if (sac.size() < 10) {
-					if (o instanceof Ration) {
+					if (o instanceof Ration && j.getJoueurCourant().estEnVille()) {
 						Ville.getVille().getEntrepot().retirerEnQte(new Ration(1));
 						sac.ajouter(new Ration(1));
 					} else {
-						if (o instanceof Gourde) {
+						if (o instanceof Gourde && j.getJoueurCourant().estEnVille()) {
 							Ville.getVille().getEntrepot().retirerEnQte(new Gourde(1));
 							sac.ajouter(new Gourde(1));
 						} else {
-							if (o instanceof BoissonEnergisante) {
+							if (o instanceof BoissonEnergisante && j.getJoueurCourant().estEnVille()) {
 								Ville.getVille().getEntrepot().retirerEnQte(new BoissonEnergisante(1));
 								sac.ajouter(new BoissonEnergisante(1));
 							} else {
