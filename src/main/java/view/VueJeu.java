@@ -393,12 +393,19 @@ public class VueJeu extends JPanel implements Observer {
 								cote * 8 / 100, cote * 8 / 100, this);
 						break;
 					case "Mur d'enceinte":
+						if (Ville.getVille().getPortesOuvertes()) {
+							icon = ImageIO.read(new File("src/main/resources/mur_enceinte_ouvert.png"));
+						} else {
+							icon = ImageIO.read(new File("src/main/resources/mur_enceinte.png"));
+						}
 						g.drawImage(icon, this.padding * 2 + cote + (cote * 11 / 100), this.padding + (cote * 9 / 100),
 								cote * 79 / 100, cote * 78 / 100, this);
 						break;
 					case "Portes blindées":
-						g.drawImage(icon, this.padding * 2 + cote + (cote * 11 / 100), this.padding + (cote * 9 / 100),
-								cote * 79 / 100, cote * 78 / 100, this);
+						if (!Ville.getVille().getPortesOuvertes()) {
+							g.drawImage(icon, this.padding * 2 + cote + (cote * 11 / 100),
+									this.padding + (cote * 9 / 100), cote * 79 / 100, cote * 78 / 100, this);
+						}
 						break;
 					}
 
