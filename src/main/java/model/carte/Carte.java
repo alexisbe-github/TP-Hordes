@@ -1,28 +1,18 @@
 package main.java.model.carte;
 
-import java.util.List;
-import java.util.Observable;
-
-import main.java.model.Joueur;
-import main.java.model.objet.Planche;
 import main.java.model.objet.factory.FabriqueObjet;
 import main.java.model.objet.factory.FabriqueObjetBoissonEnergisante;
 import main.java.model.objet.factory.FabriqueObjetPlanche;
 import main.java.model.objet.factory.FabriqueObjetPlaqueMetal;
 import main.java.utilitaire.Utilitaire;
 
-public class Carte extends Observable {
+public class Carte {
 
 	private final int TAILLE = 25;
 	private Case[][] carte; // la carte est un tableau à 2 dimensions de cases
-	private List<Joueur> joueurs;
 	private final int NB_PLANCHES = 1000;
 	private final int NB_PLAQUES = 500;
 	private final int NB_BOISSONS = 100;
-
-	public Carte(List<Joueur> joueurs) {
-		this.joueurs = joueurs;
-	}
 
 	public Case[][] getCarte() {
 		return this.carte;
@@ -64,10 +54,6 @@ public class Carte extends Observable {
 		this.fabriquer(fboisson, this.NB_BOISSONS);
 		this.fabriquer(fplanche, this.NB_PLANCHES);
 		this.fabriquer(fplaque, this.NB_PLAQUES);
-
-		// Notification MVC
-		setChanged();
-		notifyObservers();
 	}
 
 	/**

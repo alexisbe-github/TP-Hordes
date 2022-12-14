@@ -28,7 +28,7 @@ public class Jeu extends Observable {
 	 */
 	private void init(List<Joueur> joueurs) {
 		this.joueurs = joueurs;
-		this.carte = new Carte(joueurs);
+		this.carte = new Carte();
 		this.joueurCourant = 0;
 		this.tour = 0;
 		this.journal = new Journal();

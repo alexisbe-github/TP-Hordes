@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="main.java.model.construction.Mine" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/Mine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="3203" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="main.java.model.objet.factory.FabriqueObjetPlaqueMetal" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/factory/FabriqueObjetPlaqueMetal.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="173" x="4298" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="main.java.model.objet.PlaqueMetal" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/PlaqueMetal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="121" x="2904" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="main.java.view.VueJournal" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/view/VueJournal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="124" x="1803" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="main.java.model.objet.Planche" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/Planche.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="121" x="2743" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="main.java.model.Jeu" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/Jeu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3106" y="1266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="main.java.controller.ControleurInventaire" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/controller/ControleurInventaire.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="198" x="3324" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="main.java.model.objet.factory.FabriqueObjetBoissonEnergisante" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/factory/FabriqueObjetBoissonEnergisante.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="217" x="4041" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="main.java.view.VueClicItem" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/view/VueClicItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="248" x="925" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="main.java.model.construction.FilsBarbeles" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/FilsBarbeles.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="2985" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="main.java.model.objet.Objet" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/Objet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="172" x="3065" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="main.java.view.VueConstruction" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/view/VueConstruction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="132" x="1967" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="main.java.model.construction.MitrailleuseAutomatique" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/MitrailleuseAutomatique.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="3857" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="main.java.SetupJeu" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/SetupJeu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="141" x="1622" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="main.java.view.VueInfoJeu" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/view/VueInfoJeu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="221" x="2592" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="main.java.model.construction.reflection.ConstructionLoader" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/reflection/ConstructionLoader.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="251" x="53" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="main.java.model.construction.PortesBlindes" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/PortesBlindes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="3421" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="main.java.model.Joueur" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/Joueur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="493" width="246" x="3464" y="1245"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="main.java.model.objet.BoissonEnergisante" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/BoissonEnergisante.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="141" x="3226" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="main.java.model.stockage.ListeItems" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/stockage/ListeItems.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="120" x="3407" y="2452"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="main.java.model.stockage.Inventaire" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/stockage/Inventaire.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="138" x="3407" y="2123"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="main.java.utilitaire.Utilitaire" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/utilitaire/Utilitaire.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="138" x="1444" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="main.java.controller.ControleurClic" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/controller/ControleurClic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="193" x="2359" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="main.java.model.Journal" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/Journal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="146" x="3650" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="main.java.model.construction.MurEnceinte" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/MurEnceinte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="3639" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="main.java.controller.ControleurMouvementSouris" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/controller/ControleurMouvementSouris.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="207" x="678" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="main.java.model.construction.FosseZombie" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/FosseZombie.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="4075" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="main.java.model.carte.Carte" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/carte/Carte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3955" y="1098"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="main.java.model.stockage.Sac" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/stockage/Sac.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="140" x="3567" y="2452"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="main.java.model.carte.Case" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/carte/Case.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4086" y="1440"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="main.java.model.stockage.Entrepot" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/stockage/Entrepot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="140" x="3227" y="2452"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="main.java.controller.ControleurCommandes" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/controller/ControleurCommandes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="180" x="2139" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="33" language="java" name="main.java.model.stockage" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/stockage" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="172" x="2853" y="37"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="34" language="java" name="main.java.model.objet.factory.FabriqueObjetPlanche" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/factory/FabriqueObjetPlanche.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="149" x="3852" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="main.java.model.construction.Abris" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/Abris.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="178" x="4293" y="2789"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="main.java.model.objet.Ration" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/Ration.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="121" x="2582" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="main.java.model.construction.Construction" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction/Construction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="183" x="3747" y="2452"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="main.java.model.objet.Gourde" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/Gourde.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="121" x="3065" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="39" language="java" name="main.java.model.construction" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/construction" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="191" x="1213" y="37"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="40" language="java" name="main.java.model.objet.factory.FabriqueObjet" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/objet/factory/FabriqueObjet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="136" x="4041" y="662"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="main.java.controller.ControleurMouvementSourisInventaire" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/controller/ControleurMouvementSourisInventaire.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="284" x="354" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="main.java.model.carte.Ville" project="TP-Hordes" 
+    file="/TP-Hordes/src/main/java/model/carte/Ville.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="208" x="3624" y="2123"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <realization id="44">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="46">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <realization id="49">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <association id="50">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="51" name="journal"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="54" name="joueurs"/>      
+      <multiplicity id="55" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <bendpoint x="3593" y="2123"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="57" name="sac"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="59">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <association id="60">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="61" name="instance"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="64">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="65">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="66">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="67" name="instance"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="70">    
+    <bendpoint x="3847" y="1377"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="71" name="carte"/>      
+      <multiplicity id="72" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="73">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="74">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="75">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="77">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="78" name="loot"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="81">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="82" name="constructions"/>      
+      <multiplicity id="83" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="85" name="carteVersionJoueur"/>      
+      <multiplicity id="86" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="88" name="carte"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="90">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="91">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <association id="92">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="93" name="joueurs"/>      
+      <multiplicity id="94" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
