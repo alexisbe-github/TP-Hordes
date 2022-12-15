@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -30,7 +30,7 @@ public class LancerJeu {
 	private static List<Joueur> joueurs;
 
 	public static void main(String[] args) {
-		joueurs = new LinkedList<Joueur>();
+		joueurs = new ArrayList<Joueur>();
 		// Fenetre de demande du nombre de joueurs
 		fenetre = new JFrame("Lancement de Hordes");
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
